@@ -137,6 +137,403 @@
 }
 
    </style>
+   <style>
+     :root {
+            --primary-red: #dc2626;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg-light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+       
+        .container {
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+            border-radius: clamp(8px, 2vw, 16px);
+            overflow: hidden;
+            height: clamp(300px, 50vw, 500px);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: clamp(1rem, 4vw, 2rem);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            color: white;
+        }
+
+        .hero-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-red);
+            padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.5rem, 2vw, 0.75rem);
+            border-radius: 4px;
+            font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+            font-weight: 600;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .hero-title {
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+        }
+
+        .hero-excerpt {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            opacity: 0.9;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            padding-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .see-all {
+            color: var(--primary-red);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .see-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Latest News Grid */
+        .latest-news-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        @media (min-width: 640px) {
+            .latest-news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .latest-news-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .news-card {
+            background: white;
+            border-radius: clamp(8px, 2vw, 12px);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border);
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: clamp(140px, 25vw, 180px);
+            object-fit: cover;
+        }
+
+        .news-card-content {
+            padding: clamp(0.75rem, 2.5vw, 1rem);
+        }
+
+        .news-card-meta {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            color: var(--text-gray);
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+        }
+
+        .news-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .news-card-title {
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+        }
+
+        .news-card-excerpt {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: var(--text-gray);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Bulletin Story */
+        .bulletin-story {
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        .bulletin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(clamp(60px, 15vw, 80px), 1fr));
+            gap: clamp(0.75rem, 2.5vw, 1.25rem);
+            justify-items: center;
+        }
+
+        .bulletin-item {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .bulletin-item:hover {
+            transform: scale(1.05);
+        }
+
+        .bulletin-avatar {
+            width: clamp(60px, 15vw, 80px);
+            height: clamp(60px, 15vw, 80px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-red);
+            margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
+        }
+
+        .bulletin-name {
+            font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Must Read Section */
+        .must-read-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        @media (min-width: 768px) {
+            .must-read-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .must-read-grid {
+                grid-template-columns: 1fr 2fr 1fr;
+            }
+        }
+
+        .must-read-large {
+            grid-column: span 1;
+        }
+
+        @media (min-width: 1024px) {
+            .must-read-large.featured {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+        }
+
+        .must-read-card {
+            position: relative;
+            border-radius: clamp(8px, 2vw, 12px);
+            overflow: hidden;
+            height: clamp(200px, 40vw, 300px);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .must-read-card.featured {
+            height: 100%;
+            min-height: clamp(300px, 50vw, 400px);
+        }
+
+        .must-read-card:hover {
+            transform: scale(1.02);
+        }
+
+        .must-read-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .must-read-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: clamp(1rem, 3vw, 1.5rem);
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            color: white;
+        }
+
+        .must-read-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
+            opacity: 0.9;
+        }
+
+        .must-read-title {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .must-read-card.featured .must-read-title {
+            font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+        }
+
+        /* Editor's Pick */
+        .editors-pick {
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        .editors-pick-featured {
+            position: relative;
+            border-radius: clamp(8px, 2vw, 16px);
+            overflow: hidden;
+            height: clamp(300px, 50vw, 400px);
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            cursor: pointer;
+        }
+
+        .editors-pick-featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .editors-pick-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            color: white;
+        }
+
+        .editors-pick-title {
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .editors-pick-excerpt {
+            font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .editors-pick-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        @media (min-width: 640px) {
+            .editors-pick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .editors-pick-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .editors-pick-small {
+            border-radius: clamp(8px, 2vw, 12px);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .editors-pick-small:hover {
+            transform: translateY(-4px);
+        }
+
+        .editors-pick-small img {
+            width: 100%;
+            height: clamp(140px, 25vw, 180px);
+            object-fit: cover;
+        }
+
+        .editors-pick-small-content {
+            padding: clamp(0.75rem, 2.5vw, 1rem);
+            background: var(--bg-light);
+        }
+
+        .editors-pick-small-title {
+            font-size: clamp(0.9rem, 2.3vw, 1rem);
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        /* Responsive utilities */
+        @media (max-width: 639px) {
+            .hide-mobile {
+                display: none;
+            }
+        }
+   </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -345,6 +742,234 @@
 
 
 
+ <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <img src="https://i.pinimg.com/736x/0b/6c/b1/0b6cb1a71ca09f9eeff65bac7f4dda16.jpg" alt="Học sinh đại học">
+            <div class="hero-content">
+                <span class="hero-category">🎓 GIÁO DỤC ĐẠI HỌC</span>
+                <h1 class="hero-title">10 trường đại học hàng đầu Việt Nam năm 2024</h1>
+                <p class="hero-excerpt">Khám phá danh sách các trường đại học xuất sắc nhất với chất lượng đào tạo được công nhận quốc tế và tỷ lệ sinh viên có việc làm cao nhất...</p>
+            </div>
+        </div>
+
+        <!-- Latest News -->
+        <section>
+            <div class="section-header">
+                <h2>Tin Mới Nhất</h2>
+                <a href="#" class="see-all">Xem tất cả →</a>
+            </div>
+            <div class="latest-news-grid">
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop" class="news-card-image" alt="Học sinh">
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <span>📚 THPT</span>
+                            <span>• 2 giờ trước</span>
+                        </div>
+                        <h3 class="news-card-title">Học sinh Việt Nam giành 4 huy chương vàng Olympic Toán học</h3>
+                        <p class="news-card-excerpt">Đoàn học sinh Việt Nam xuất sắc đạt thành tích cao tại kỳ thi Olympic Toán học quốc tế...</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop" class="news-card-image" alt="Sinh viên">
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <span>⚽ THỂ THAO</span>
+                            <span>• 3 giờ trước</span>
+                        </div>
+                        <h3 class="news-card-title">Đại học Quốc gia vô địch giải bóng đá sinh viên toàn quốc</h3>
+                        <p class="news-card-excerpt">Trận chung kết kịch tính với tỷ số 3-2 đã mang về chức vô địch cho đội tuyển...</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop" class="news-card-image" alt="Công nghệ">
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <span>💻 CÔNG NGHỆ</span>
+                            <span>• 4 giờ trước</span>
+                        </div>
+                        <h3 class="news-card-title">Sinh viên IT phát triển ứng dụng học AI miễn phí</h3>
+                        <p class="news-card-excerpt">Ứng dụng giúp người học tiếp cận AI và lập trình một cách dễ dàng và hiệu quả...</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&h=250&fit=crop" class="news-card-image" alt="Tốt nghiệp">
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <span>🎓 TỐT NGHIỆP</span>
+                            <span>• 5 giờ trước</span>
+                        </div>
+                        <h3 class="news-card-title">95% sinh viên ngành CNTT có việc làm ngay sau tốt nghiệp</h3>
+                        <p class="news-card-excerpt">Con số ấn tượng cho thấy nhu cầu nhân lực công nghệ đang rất cao trên thị trường...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bulletin Story -->
+        <section class="bulletin-story">
+            <div class="section-header">
+                <h2>Chuyên Gia & Giảng Viên</h2>
+                <a href="#" class="see-all">Xem tất cả →</a>
+            </div>
+            <div class="bulletin-grid">
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=12" class="bulletin-avatar" alt="GS. Nguyễn Văn A">
+                    <div class="bulletin-name">GS. Nguyễn Văn A</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=20" class="bulletin-avatar" alt="PGS. Trần Thị B">
+                    <div class="bulletin-name">PGS. Trần Thị B</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=33" class="bulletin-avatar" alt="TS. Lê Văn C">
+                    <div class="bulletin-name">TS. Lê Văn C</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=47" class="bulletin-avatar" alt="ThS. Phạm Thị D">
+                    <div class="bulletin-name">ThS. Phạm Thị D</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=52" class="bulletin-avatar" alt="GV. Hoàng Văn E">
+                    <div class="bulletin-name">GV. Hoàng Văn E</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=65" class="bulletin-avatar" alt="TS. Vũ Thị F">
+                    <div class="bulletin-name">TS. Vũ Thị F</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=68" class="bulletin-avatar" alt="PGS. Đỗ Văn G">
+                    <div class="bulletin-name">PGS. Đỗ Văn G</div>
+                </div>
+                <div class="bulletin-item">
+                    <img src="https://i.pravatar.cc/150?img=27" class="bulletin-avatar" alt="GS. Bùi Thị H">
+                    <div class="bulletin-name">GS. Bùi Thị H</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Must Read -->
+        <section>
+            <div class="section-header">
+                <h2>Đọc Nhiều Nhất</h2>
+                <a href="#" class="see-all">Xem tất cả →</a>
+            </div>
+            <div class="must-read-grid">
+                <div class="must-read-large">
+                    <div class="must-read-card">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop" alt="Lập trình">
+                        <div class="must-read-overlay">
+                            <div class="must-read-category">💻 CÔNG NGHỆ • 10 PHÚT ĐỌC</div>
+                            <h3 class="must-read-title">Hành trình trở thành lập trình viên từ con số 0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="must-read-large featured">
+                    <div class="must-read-card featured">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" alt="Học nhóm">
+                        <div class="must-read-overlay">
+                            <div class="must-read-category">📚 KỸ NĂNG • 8 PHÚT ĐỌC</div>
+                            <h3 class="must-read-title">Phương pháp học nhóm hiệu quả cho sinh viên đại học</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="must-read-large">
+                    <div class="must-read-card">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=600&fit=crop" alt="Học bài">
+                        <div class="must-read-overlay">
+                            <div class="must-read-category">✏️ THPT • 6 PHÚT ĐỌC</div>
+                            <h3 class="must-read-title">Bí quyết ôn thi THPT Quốc gia đạt điểm cao</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="must-read-large">
+                    <div class="must-read-card">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" alt="Du học">
+                        <div class="must-read-overlay">
+                            <div class="must-read-category">✈️ DU HỌC • 12 PHÚT ĐỌC</div>
+                            <h3 class="must-read-title">10 quốc gia có chi phí du học thấp nhất</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="must-read-large">
+                    <div class="must-read-card">
+                        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=400&h=300&fit=crop" alt="Học bổng">
+                        <div class="must-read-overlay">
+                            <div class="must-read-category">💰 HỌC BỔNG • 7 PHÚT ĐỌC</div>
+                            <h3 class="must-read-title">Danh sách học bổng toàn phần 2024-2025</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editor's Pick -->
+        <section class="editors-pick">
+            <div class="section-header">
+                <h2>Lựa Chọn Của Biên Tập Viên</h2>
+                <a href="#" class="see-all">Xem tất cả →</a>
+            </div>
+            
+            <div class="editors-pick-featured">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=500&fit=crop" alt="Công nghệ giáo dục">
+                <div class="editors-pick-content">
+                    <span class="hero-category">🚀 CÔNG NGHỆ GIÁO DỤC</span>
+                    <h2 class="editors-pick-title">AI trong giáo dục: Tương lai của việc học đã đến</h2>
+                    <p class="editors-pick-excerpt">Trí tuệ nhân tạo đang thay đổi cách chúng ta học tập và giảng dạy. Khám phá những ứng dụng AI mới nhất giúp cá nhân hóa trải nghiệm học tập cho từng học sinh...</p>
+                </div>
+            </div>
+
+            <div class="editors-pick-grid">
+                <div class="editors-pick-small">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop" alt="Sách">
+                    <div class="editors-pick-small-content">
+                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                            <span>📖 ĐỌC SÁCH</span>
+                        </div>
+                        <h3 class="editors-pick-small-title">Top 20 cuốn sách mọi sinh viên nên đọc</h3>
+                    </div>
+                </div>
+
+                <div class="editors-pick-small">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Học online">
+                    <div class="editors-pick-small-content">
+                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                            <span>💻 E-LEARNING</span>
+                        </div>
+                        <h3 class="editors-pick-small-title">Nền tảng học trực tuyến miễn phí tốt nhất</h3>
+                    </div>
+                </div>
+
+                <div class="editors-pick-small">
+                    <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&h=250&fit=crop" alt="Viết bài">
+                    <div class="editors-pick-small-content">
+                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                            <span>✍️ KỸ NĂNG</span>
+                        </div>
+                        <h3 class="editors-pick-small-title">Cách viết luận văn đạt điểm cao</h3>
+                    </div>
+                </div>
+
+                <div class="editors-pick-small">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&h=250&fit=crop" alt="Laptop">
+                    <div class="editors-pick-small-content">
+                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                            <span>💼 NGHỀ NGHIỆP</span>
+                        </div>
+                        <h3 class="editors-pick-small-title">15 ngành nghề hot nhất năm 2024</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 
 

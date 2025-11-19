@@ -99,7 +99,7 @@
 <style>
     /* ======== MUSIC UI - MOBILE VERSION ======== */
 
-.discovery-section{background:#fff;padding:40px 20px 0;margin-top:30px;}
+.discovery-section{background:#fff;padding:10px 20px 0;margin-top:0px;}
 .discovery-title{font-size:1.4rem;font-weight:700;color:#111;}
 .discovery-sub{font-size:.9rem;color:#888;margin-top:4px;}
 .discovery-search{margin-top:18px;background:#f0f0f0;padding:10px 16px;border-radius:14px;display:flex;align-items:center;gap:8px;}
@@ -501,10 +501,9 @@
 }
 
 .full-player-body img {
-    width: 78%;
-    max-width: 300px;
+    width: 100%;
     border-radius: 16px;
-    height: 250px;
+    height: 300px;
     object-fit: cover;
     margin-top: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,.12);
@@ -924,10 +923,10 @@
           onclick="playSongEl(this)"
           data-src="audio/muayeuthuongdandangden.mp3"
           data-title="Tuyết yêu thương"
-          data-img="https://i.pinimg.com/736x/25/06/c9/2506c909c706c6fcbaaf686aafc5032e.jpg"
+          data-img="https://i.pinimg.com/736x/ce/de/e5/cedee5f8d7dcc3057b1bdd4710adc098.jpg"
         >
           <img
-            src="https://i.pinimg.com/736x/25/06/c9/2506c909c706c6fcbaaf686aafc5032e.jpg"
+            src="https://i.pinimg.com/736x/ce/de/e5/cedee5f8d7dcc3057b1bdd4710adc098.jpg"
           />
           <p class="fw-bold mt-2 mb-0 small">Tuyết yêu thương</p>
           <p class="text-muted small mb-0">Will M</p>
@@ -1147,9 +1146,27 @@
 
 const discoverySongs = [
 {
+    title: "Exit sign",
+    artist: "Hieuthuhai",
+    img: "https://images.genius.com/a7c69b14897ffc5feb3febaa21f945c3.1000x1000x1.jpg",
+    src: "audio/exs.mp3"
+  },
+  {
+    title: "Chúng ta không thuộc về nhau",
+    artist: "Sơn Tùng MTP",
+    img: "https://image-cdn.nct.vn/mv/2016/08/04/c/e/1/9/1470277194346_640.jpg",
+    src: "audio/ctktvn.mp3"
+  },
+  {
+    title: "Không thể say",
+    artist: "Hieuthuhai",
+    img: "https://media.baoquangninh.vn/upload/image/202304/medium/2076266_65fe9adfeeb2cf3b5636dcf37d1ac631.jpg",
+    src: "audio/kts.mp3"
+  },
+{
     title: "Ghen",
-    artist: "Erik",
-    img: "https://i.pinimg.com/736x/8f/1e/f0/8f1ef039866432d20c89df85880c4b83.jpg",
+    artist: "Erik ft Min",
+    img: "https://photo-resize-zmp3.zadn.vn/w600_r1x1_jpeg/covers/d/0/d05f9b3c87cf7ccda468174b28757489_1495770525.jpg",
     src: "audio/g.mp3"
   },
   {
@@ -1188,7 +1205,7 @@ const popularSongs = [
   {
     title: "Miên man",
     artist: "Minh Huy",
-    img: "https://tse4.mm.bing.net/th/id/OIP.QkauL8ekndINx6OdHB938QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    img: "https://i.pinimg.com/1200x/a6/1c/db/a61cdba4af7acede93dfb75ae4b62608.jpg",
     src: "audio/mm.mp3"
   },
   {
@@ -1200,13 +1217,13 @@ const popularSongs = [
   {
     title: "Nơi này có anh",
     artist: "Sơn Tùng MTP",
-    img: "https://tse2.mm.bing.net/th/id/OIP.324bsajLsJTW9JAQ9tXJkgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    img: "https://kenh14cdn.com/2017/34-1487093041598.jpg",
     src: "audio/noinaycoanh.mp3"
   },
   {
     title: "Last night 2",
     artist: "Hazel",
-    img: "https://i.scdn.co/image/ab67616d0000b273910980473a76836890634076",
+    img: "https://i.pinimg.com/736x/41/5d/24/415d240f31058e79a9198dff14ddf693.jpg",
     src: "audio/ln.mp3"
   }
 ];
