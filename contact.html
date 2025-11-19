@@ -137,6 +137,224 @@
 }
 
    </style>
+   <style>
+    .contact-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+        }
+        
+        .left-section {
+            padding: 80px 60px;
+            background: white;
+        }
+        
+        .brand {
+            color: #6366f1;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .main-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .description {
+            font-size: 0.95rem;
+            color: #999;
+            line-height: 1.8;
+        }
+        
+        .right-section {
+            padding: 80px 60px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 18px 50px 18px 20px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            background: white;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-control::placeholder {
+            color: #aaa;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            cursor: pointer;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #1a1a1a;
+            color: white;
+            border: 2px solid #1a1a1a;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+        
+        .submit-btn:hover {
+            background: transparent;
+            color: #1a1a1a;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .left-section, .right-section {
+                padding: 50px 30px;
+            }
+            
+            .main-title {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .left-section, .right-section {
+                padding: 10px 15px;
+            }
+            
+            .main-title {
+                font-size: 1.5rem;
+                margin: 5px;
+            }
+            
+            .brand {
+                font-size: 0.8rem;
+            }
+            .subtitle{
+                font-size: 0.9rem;
+                display: none;
+            }
+            .description{
+                font-size: 0.7rem;
+            }
+            .form-control{
+                padding: 5px 12px;
+                font-size: 0.9rem;
+            }
+            
+
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .success-icon i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        .modal-title-success {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+        
+        .modal-text {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .modal-btn {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .modal-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+   </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -339,7 +557,97 @@
 
 
 
+<div class="contact-wrapper">
+        <div class="contact-container">
+            <!-- Left Section -->
+            <div class="left-section">
+                <div class="brand">| THEDUNG</div>
+                <h1 class="main-title">Giữ liên lạc</h1>
+                <p class="subtitle">Chúng tôi xây dựng trải nghiệm học tập để nâng cao và trao quyền cho tổ chức giáo dục.</p>
+                <p class="description">
+                    Với đội ngũ giảng viên giàu kinh nghiệm và phương pháp giảng dạy hiện đại, chúng tôi cam kết mang đến cho học viên những khóa học chất lượng cao. 
+                </p>
+            </div>
+            
+            <!-- Right Section - Form -->
+            <div class="right-section">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Họ và tên của bạn" required>
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Địa chỉ Email" required>
+                        <i class="fas fa-envelope input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Số điện thoại">
+                        <i class="fas fa-phone input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Loại khóa học quan tâm">
+                        <i class="fas fa-lock input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="">Bạn đang tìm kiếm điều gì?</option>
+                            <option value="tuvankhoahoc">Tư vấn khóa học</option>
+                            <option value="dangkyhoc">Đăng ký học</option>
+                            <option value="hoptac">Hợp tác giảng dạy</option>
+                            <option value="khac">Khác</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="">Ngân sách của bạn?</option>
+                            <option value="duoi5">Dưới 5 triệu VNĐ</option>
+                            <option value="5-10">5 - 10 triệu VNĐ</option>
+                            <option value="10-20">10 - 20 triệu VNĐ</option>
+                            <option value="tren20">Trên 20 triệu VNĐ</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Gửi</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 class="modal-title-success">Gửi thành công!</h3>
+                    <p class="modal-text">
+                        Cảm ơn bạn đã quan tâm đến chương trình của chúng tôi.<br>
+                        Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.
+                    </p>
+                    <button type="button" class="modal-btn" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            
+            this.reset();
+        });
+    </script>
 
 
 

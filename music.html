@@ -287,7 +287,7 @@
     /* ===================== PLAYER (GIỮ NGUYÊN) ===================== */
     .music-player,
     .mini-player {
-        max-width: 420px;
+        min-width: 600px;
         margin: 0 auto;
         border-radius: 20px;
     }
@@ -451,6 +451,160 @@
 }
 
    </style>
+  <style>
+    /* ===== FULL PLAYER MODERN ===== */
+
+.full-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 99999;
+    transform: translateY(100%);
+    transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Show */
+.full-player.active {
+    transform: translateY(0);
+}
+
+/* Header */
+.full-player-header {
+    padding: 18px 22px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.full-player-header span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8a8a8a;
+}
+
+.full-player-header i {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Cover */
+.full-player-body {
+    padding: 0 24px;
+    text-align: center;
+    flex: 1;
+}
+
+.full-player-body img {
+    width: 78%;
+    max-width: 300px;
+    border-radius: 16px;
+    height: 250px;
+    object-fit: cover;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+/* Song Text */
+.full-song-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 18px;
+}
+
+.full-song-info p {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* Progress bar */
+.progress-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    height: 4px;
+    width: 100%;
+    background: #e5e7eb;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #111;
+    border-radius: 4px;
+    transition: width .1s linear;
+}
+
+.time-info {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 12px;
+}
+
+/* Playback Controls */
+.playback-controls {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.playback-controls i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Central Play Button */
+.play-button {
+    width: 60px;
+    height: 60px;
+    background: #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 28px rgba(0,0,0,.25);
+}
+
+.play-button i {
+    font-size: 30px;
+    color: #fff;
+}
+
+/* Desktop upscale */
+@media (min-width: 768px) {
+    .full-player-body img {
+        width: 360px;
+        height: 360px;
+    }
+
+    .full-song-info h3 {
+        font-size: 26px;
+    }
+
+    .playback-controls i {
+        font-size: 30px;
+    }
+}
+
+  </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -792,6 +946,19 @@
           <p class="fw-bold mt-2 mb-0 small">Nơi này có anh</p>
           <p class="text-muted small mb-0">Sơn Tùng-MTP</p>
         </div>
+          <div
+          class="music-card"
+          onclick="playSongEl(this)"
+          data-src="audio/mttb.mp3"
+          data-title="Một thuở thanh bình"
+          data-img="https://i.pinimg.com/736x/ec/85/1e/ec851ecb2be6c08c14e6a4e5af85d6f8.jpg"
+        >
+          <img
+            src="https://i.pinimg.com/736x/ec/85/1e/ec851ecb2be6c08c14e6a4e5af85d6f8.jpg"
+          />
+          <p class="fw-bold mt-2 mb-0 small">Một thuở thanh bình</p>
+          <p class="text-muted small mb-0">TeA ft Tuyết</p>
+        </div>
       </div>
     </section>
 
@@ -809,6 +976,49 @@
 
       </div>
     </div>
+
+    <!-- FULL SCREEN PLAYER -->
+<div id="fullPlayer" class="full-player">
+    <div class="full-player-header">
+        <i class="fas fa-chevron-down" onclick="closeFullPlayer()"></i>
+        <span>Đang phát</span>
+        <i class="fas fa-ellipsis-h"></i>
+    </div>
+    
+    <div class="full-player-body">
+        <img id="fullImg" src="" alt="">
+        
+        <div class="full-song-info">
+            <h3 id="fullTitle">Unsayable</h3>
+            <p id="fullArtist">Brambles</p>
+        </div>
+        
+        <div class="full-controls">
+            <i class="far fa-heart"></i>
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div id="fullProgress" class="progress-fill"></div>
+            </div>
+            <div class="time-info">
+                <span id="currentTime">1:04</span>
+                <span id="totalTime">2:52</span>
+            </div>
+        </div>
+        
+        <div class="playback-controls">
+            <i class="fas fa-random"></i>
+            <i class="fas fa-step-backward" onclick="prevSong()"></i>
+            <div class="play-button" onclick="togglePlay()">
+                <i id="fullPlayIcon" class="fas fa-pause"></i>
+            </div>
+            <i class="fas fa-step-forward" onclick="nextSong()"></i>
+            <i class="fas fa-redo"></i>
+        </div>
+    </div>
+</div>
 
   
 
@@ -936,6 +1146,18 @@
 // ============================
 
 const discoverySongs = [
+{
+    title: "Ghen",
+    artist: "Erik",
+    img: "https://i.pinimg.com/736x/8f/1e/f0/8f1ef039866432d20c89df85880c4b83.jpg",
+    src: "audio/g.mp3"
+  },
+  {
+    title: "Dại kher",
+    artist: "Tage ft SonTran",
+    img: "https://i1.sndcdn.com/artworks-eyl0UTQ3h1eYayaI-hkIpBw-t500x500.jpg",
+    src: "audio/dk.mp3"
+  },
   {
     title: "Nắng ấm xa dần",
     artist: "Sơn Tùng-MTP",
@@ -953,7 +1175,13 @@ const discoverySongs = [
     artist: "Buitruonglinh",
     img: "https://i.pinimg.com/736x/7b/c8/d9/7bc8d9a65598fcab714a616c6171a07a.jpg",
     src: "audio/vdg.mp3"
-  }
+  },
+  {
+    title: "Roi mot ngay",
+    artist: "Dewie",
+    img: "https://image-cdn.nct.vn/song/2023/04/25/b/2/1/2/1682419438232_300.jpg",
+    src: "audio/rmn.mp3"
+  },
 ];
 
 const popularSongs = [
@@ -974,6 +1202,12 @@ const popularSongs = [
     artist: "Sơn Tùng MTP",
     img: "https://tse2.mm.bing.net/th/id/OIP.324bsajLsJTW9JAQ9tXJkgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     src: "audio/noinaycoanh.mp3"
+  },
+  {
+    title: "Last night 2",
+    artist: "Hazel",
+    img: "https://i.scdn.co/image/ab67616d0000b273910980473a76836890634076",
+    src: "audio/ln.mp3"
   }
 ];
 
@@ -1191,6 +1425,85 @@ document.getElementById("miniPlayPause").addEventListener("click", function () {
         mirror: true,
         easing: "ease-out-cubic",
       });
+    </script>
+    <script>
+      // Mở Full Player khi click vào Mini Player
+document.getElementById("miniPlayer").addEventListener("click", function(e) {
+    // Không mở nếu click vào controls
+    if (e.target.closest('.mini-controls')) return;
+    
+    openFullPlayer();
+});
+
+function openFullPlayer() {
+    const fullPlayer = document.getElementById("fullPlayer");
+    const miniPlayer = document.getElementById("miniPlayer");
+    
+    if (!currentSong) return;
+    
+    // Sync data
+    document.getElementById("fullImg").src = document.getElementById("miniImg").src;
+    document.getElementById("fullTitle").innerText = document.getElementById("miniTitle").innerText;
+    document.getElementById("fullArtist").innerText = document.getElementById("miniArtist").innerText;
+    
+    // Sync play/pause icon
+    const fullIcon = document.getElementById("fullPlayIcon");
+    fullIcon.className = audio.paused ? "fas fa-play" : "fas fa-pause";
+    
+    // Show full player, hide mini
+    fullPlayer.classList.add("active");
+    miniPlayer.classList.remove("active");
+}
+
+function closeFullPlayer() {
+    const fullPlayer = document.getElementById("fullPlayer");
+    const miniPlayer = document.getElementById("miniPlayer");
+    
+    fullPlayer.classList.remove("active");
+    miniPlayer.classList.add("active");
+}
+
+// Update progress bar
+audio.addEventListener('timeupdate', function() {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    document.getElementById("fullProgress").style.width = progress + '%';
+    
+    // Update time
+    document.getElementById("currentTime").innerText = formatTime(audio.currentTime);
+    document.getElementById("totalTime").innerText = formatTime(audio.duration);
+});
+
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Click progress bar to seek
+document.querySelector('.progress-bar').addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = percent * audio.duration;
+});
+
+// Update play/pause trong full player
+function togglePlay() {
+    const miniBtn = document.getElementById("miniPlayPause");
+    const fullIcon = document.getElementById("fullPlayIcon");
+
+    if (!currentSong) return;
+
+    if (audio.paused) {
+        audio.play();
+        miniBtn.className = "bi bi-pause-fill";
+        fullIcon.className = "fas fa-pause";
+    } else {
+        audio.pause();
+        miniBtn.className = "bi bi-play-fill";
+        fullIcon.className = "fas fa-play";
+    }
+}
     </script>
 </body>
 </html>

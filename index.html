@@ -144,7 +144,173 @@
 
 
 </style>
+<style>
+ .process-section {
+    padding: 5px 20px;
+    background: #f9fafb;
+    position: relative;
+}
 
+.process-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.process-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.process-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 50px;
+}
+
+/* Steps layout */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    width: 30%;
+    min-width: 260px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.7s ease;
+}
+
+.process-step.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Circle icon */
+.step-circle {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.35s ease;
+}
+
+.step-circle:hover {
+    transform: translateY(-8px) scale(1.07);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.step-circle i {
+    font-size: 34px;
+    color: #0ea5e9;
+    transition: 0.3s;
+}
+
+.step-circle:hover i {
+    color: #0284c7;
+}
+
+.step-number {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #0ea5e9;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Text under step */
+.step-title {
+    margin-top: 18px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.step-text {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.55;
+}
+
+/* Dashed lines */
+.process-lines {
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+}
+
+.line {
+    width: 40%;
+    height: 2px;
+    border-bottom: 2px dashed #a5f3fc;
+    position: absolute;
+    top: -90px;
+    opacity: 0.6;
+}
+
+/* Left line position */
+.line.left {
+    left: 0;
+}
+
+/* Right line */
+.line.right {
+    right: 0;
+}
+
+/* Glow animation passing through */
+.line.active {
+    position: relative;
+}
+
+.line.active::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 5px;
+    background: #0ea5e9;
+    filter: blur(4px);
+    border-radius: 50px;
+    top: -2px;
+    animation: moveGlow 2.3s linear;
+}
+
+@keyframes moveGlow {
+    from { left: 0; opacity: .8; }
+    to { left: 100%; opacity: 0; }
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .process-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+    .line {
+        display: none;
+    }
+}
+
+</style>
 
 <style>
     .search-section { text-align:center; padding:10px 20px 10px; }
@@ -239,7 +405,142 @@
 }
    </style>
 
-   
+   <style>
+    .wave-process {
+  padding: 5px 20px;
+  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.process-small {
+  color: #94a3b8;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.process-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.process-title span {
+  color: #38bdf8;
+}
+
+.process-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  position: relative;
+}
+
+.bg-num {
+  position: absolute;
+  font-size: 150px;
+  font-weight: 900;
+  color: #e2e8f0;
+  opacity: 0.35;
+  z-index: 1;
+}
+
+.num1 {
+  left: 5%;
+  top: 40px;
+}
+
+.num2 {
+  left: 45%;
+  top: 65px;
+}
+
+.num3 {
+  right: 5%;
+  top: 45px;
+}
+
+.wave-line {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  z-index: 2;
+  animation: waveMove 4s ease-in-out infinite;
+}
+
+@keyframes waveMove {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -90px;
+  position: relative;
+  z-index: 3;
+}
+
+.step {
+  text-align: center;
+  width: 30%;
+}
+
+.step-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #0284c7;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin: auto;
+  position: relative;
+}
+
+.bounce {
+  animation: bounceAnim 3s ease-in-out infinite;
+}
+
+@keyframes bounceAnim {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #0f172a;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
+  .steps { flex-direction: column; gap: 60px; }
+  .step { width: 100%; }
+  .bg-num { font-size: 80px; opacity: 0.2; }
+  .num1 { top: 10px; }
+  .num2 { top: 220px; }
+  .num3 { top: 430px; }
+}
+
+   </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -632,6 +933,142 @@
 
 
 
+<section class="process-section">
+  <div class="process-container">
+
+    <h2 class="process-title">Quy trình học tập</h2>
+    <p class="process-subtitle">
+      Khám phá cách bạn có thể bắt đầu học hiệu quả chỉ với vài bước đơn giản.
+    </p>
+
+    <div class="process-steps">
+
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-number">1</span>
+          <i class="fas fa-user"></i>
+        </div>
+        <h3 class="step-title">Đăng ký tài khoản</h3>
+        <p class="step-text">
+          Tạo tài khoản miễn phí để truy cập hàng trăm khóa học chất lượng cao.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-number">2</span>
+          <i class="fas fa-cog"></i>
+        </div>
+        <h3 class="step-title">Hoàn thiện hồ sơ</h3>
+        <p class="step-text">
+          Cập nhật thông tin cá nhân để hệ thống gợi ý khóa học phù hợp nhất.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-circle">
+          <span class="step-number">3</span>
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3 class="step-title">Bắt đầu học ngay</h3>
+        <p class="step-text">
+          Truy cập video bài giảng, làm bài kiểm tra và tiến bộ mỗi ngày.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Dashed lines -->
+    <div class="process-lines">
+      <div class="line left"></div>
+      <div class="line right"></div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section class="wave-process">
+    <div class="process-header">
+        <span class="process-small">EDU PATHWAY</span>
+        <h2 class="process-title">Lộ trình học thông minh<span>.</span></h2>
+    </div>
+
+    <div class="process-wrapper">
+
+        <!-- Background numbers -->
+        <span class="bg-num num1">1</span>
+        <span class="bg-num num2">2</span>
+        <span class="bg-num num3">3</span>
+
+        <!-- SVG Wave Line -->
+        <svg class="wave-line" viewBox="0 0 900 200" preserveAspectRatio="none">
+            <path id="wavePath"
+                d="M0,100 C150,20 300,180 450,100 S750,20 900,100"
+                stroke="#38bdf8"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+            ></path>
+        </svg>
+
+        <div class="steps">
+
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-icon bounce">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="step-title">Khởi động hành trình</h3>
+                <p class="step-text">
+                    Làm bài đánh giá năng lực nhanh để hệ thống đề xuất nội dung học phù hợp nhất với bạn.
+                </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-icon bounce">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="step-title">Học theo lộ trình cá nhân</h3>
+                <p class="step-text">
+                    Mỗi bài học đều được thiết kế theo cấp độ, kết hợp video – bài tập – ghi chú giúp bạn dễ tiếp thu hơn.
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-icon bounce">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="step-title">Đánh giá & nâng cấp</h3>
+                <p class="step-text">
+                    Hoàn thành bài kiểm tra cuối khóa, nhận chứng nhận và tiếp tục mở khóa những kỹ năng nâng cao hơn.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
 
 
 
@@ -791,7 +1228,59 @@
       // Auto play
       autoplayInterval = setInterval(nextSlide, 5000);
     </script>
-   
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+    const steps = document.querySelectorAll(".process-step");
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    entry.target.style.transitionDelay = index * 0.15 + "s";
+                }
+            });
+        },
+        { threshold: 0.3 }
+    );
+
+    steps.forEach(step => observer.observe(step));
+
+    // Hiệu ứng ánh sáng chạy qua các đường line
+    const leftLine = document.querySelector(".line.left");
+    const rightLine = document.querySelector(".line.right");
+
+    function animateLines() {
+        leftLine.classList.add("active");
+        rightLine.classList.add("active");
+
+        setTimeout(() => {
+            leftLine.classList.remove("active");
+            rightLine.classList.remove("active");
+        }, 2500);
+    }
+
+    setInterval(animateLines, 3500);
+});
+
+    </script>
+   <script>
+    const icons = document.querySelectorAll(".step-icon");
+const wave = document.getElementById("wavePath");
+
+function animateIcons() {
+  const length = wave.getTotalLength();
+
+  icons.forEach((icon, index) => {
+    const point = wave.getPointAtLength((length / 3) * (index + 0.5));
+
+    icon.style.transform = `translate(${point.x - 35}px, ${point.y - 90}px)`;
+  });
+}
+
+window.addEventListener("load", animateIcons);
+window.addEventListener("resize", animateIcons);
+
+   </script>
 
 </body>
 </html>
