@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THEDUNG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+   <style>
+
+    :root{--teal-color:#14b8a6;--purple-color:#a855f7;}a{text-decoration:none;}body{background:#f8f9fa;font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",sans-serif;}
+.navbar{background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1);padding:.75rem 0;}
+.logo-box{width:40px;height:40px;background:linear-gradient(135deg,#2dd4bf,#14b8a6);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 6px rgba(20,184,166,0.3);}
+.logo-box i{color:white;font-size:20px;}
+.brand-text{font-size:1.25rem;font-weight:600;color:#1f2937;margin-left:.75rem;}
+.day-navigator{background:#f8f9fa;border-radius:12px;padding:.5rem;display:flex;align-items:center;gap:1rem;}
+.day-btn{padding:.5rem 1rem;border:none;background:transparent;border-radius:8px;font-size:.875rem;font-weight:500;color:#6b7280;transition:all .2s;white-space:nowrap;}
+.day-btn:hover{background:white;}
+.day-btn.active{background:var(--teal-color);color:white;box-shadow:0 4px 6px rgba(20,184,166,0.3);}
+.nav-arrow{width:32px;height:32px;border:none;background:transparent;border-radius:8px;color:#6b7280;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.nav-arrow:hover{background:white;}
+.icon-btn{width:40px;height:40px;border:none;background:transparent;border-radius:8px;color:#6b7280;display:flex;align-items:center;justify-content:center;position:relative;transition:all .2s;}
+.icon-btn:hover{background:#f3f4f6;}
+.notification-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:#ef4444;border-radius:50%;}
+.events-btn{background:linear-gradient(135deg,#c084fc,#a855f7);color:white;padding:.625rem 1.25rem;border:none;border-radius:12px;font-weight:500;box-shadow:0 4px 6px rgba(168,85,247,0.3);transition:all .2s;}
+.events-btn:hover{background:linear-gradient(135deg,#a855f7,#9333ea);transform:translateY(-1px);}
+.mobile-day-nav{background:#f8f9fa;padding:.5rem;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}
+.mobile-day-nav::-webkit-scrollbar{display:none;}
+.mobile-day-btn{padding:.5rem .75rem;font-size:.75rem;display:inline-block;}
+.demo-toggle{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:.5rem 1rem;font-size:.875rem;color:#6b7280;transition:all .2s;}
+.demo-toggle:hover{background:#f9fafb;}
+@media(max-width:767.98px){
+.logo-box{width:36px;height:36px;}
+.logo-box i{font-size:18px;}
+.brand-text{font-size:1.125rem;}
+.icon-btn{width:36px;height:36px;}
+}
+.offcanvas-end{width:100%!important;max-width:320px!important;}
+.offcanvas-header{background:white;border-bottom:1px solid #f0f0f0;padding:1rem 1.25rem;}
+.user-profile{display:flex;align-items:center;gap:.75rem;padding:.5rem;background:#f8f9fa;border-radius:8px;cursor:pointer;transition:.2s;}
+.user-profile:hover{background:#e9ecef;}
+.user-avatar{width:40px;height:40px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:1rem;}
+.user-info{flex:1;}
+.user-name{font-size:.875rem;font-weight:600;color:#1f2937;margin:0;}
+.user-plan{font-size:.75rem;color:#6b7280;margin:0;}
+.offcanvas-title{font-weight:600;font-size:1rem;margin:0;}
+.offcanvas-header .btn-close{opacity:.5;font-size:.875rem;}
+.offcanvas-body{background:white;padding:1rem;}
+.search-box{position:relative;margin-bottom:1rem;}
+.search-box input{width:100%;padding:.625rem .875rem .625rem 2.5rem;border:1px solid #e5e7eb;border-radius:8px;font-size:.875rem;background:#f9fafb;transition:.2s;}
+.search-box input:focus{outline:none;border-color:#667eea;background:white;}
+.search-box i{position:absolute;left:.875rem;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:.875rem;}
+.menu-section{margin-bottom:1.5rem;}
+.section-title{font-size:.75rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;padding:0 .5rem;}
+.menu-item{display:flex;align-items:center;gap:.75rem;padding:.625rem .75rem;border-radius:8px;text-decoration:none;color:#4b5563;font-size:.875rem;font-weight:500;transition:.2s;margin-bottom:.25rem;position:relative;}
+.menu-item:hover{background:#f3f4f6;color:#1f2937;}
+.menu-item.active{background:#f3f4f6;color:#667eea;}
+.menu-item i{width:20px;font-size:1rem;color:#6b7280;}
+.menu-item.active i{color:#667eea;}
+.menu-badge{margin-left:auto;background:#10b981;color:white;font-size:.625rem;font-weight:600;padding:.125rem .375rem;border-radius:4px;}
+.add-btn{color:#9ca3af;font-size:1rem;margin-left:auto;cursor:pointer;transition:.2s;}
+.add-btn:hover{color:#667eea;}
+.project-item{display:flex;align-items:center;gap:.75rem;padding:.625rem .75rem;border-radius:8px;text-decoration:none;color:#4b5563;font-size:.875rem;font-weight:500;transition:.2s;margin-bottom:.25rem;}
+.project-item:hover{background:#f3f4f6;color:#1f2937;}
+.project-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.project-dot.purple{background:#a78bfa;}
+.project-dot.pink{background:#ec4899;}
+.project-dot.orange{background:#f59e0b;}
+.menu-divider{margin:1rem 0;border:none;height:1px;background:#f0f0f0;}
+.bottom-menu{border-top:1px solid #f0f0f0;padding-top:1rem;margin-top:auto;}
+.user-footer{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:#f9fafb;border-radius:8px;cursor:pointer;transition:.2s;text-decoration:none;margin-top:1rem;}
+.user-footer:hover{background:#f3f4f6;}
+.user-footer-avatar{width:36px;height:36px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:.875rem;}
+.user-footer-info{flex:1;}
+.user-footer-name{font-size:.875rem;font-weight:600;color:#1f2937;margin:0;}
+.user-footer-email{font-size:.75rem;color:#6b7280;margin:0;}
+.chevron-icon{color:#9ca3af;font-size:.875rem;}
+@media(max-width:767.98px){
+.offcanvas-end{max-width:100%!important;}
+.logo-box{width:36px;height:36px;}
+.logo-box i{font-size:18px;}
+.brand-text{font-size:1.125rem;}
+.icon-btn{width:36px;height:36px;}
+}
+   </style>
+
+
+<style>
+     /* ================= CONTAINER ================= */
+      .quiz-container {
+        max-width: 800px;
+        margin: 20px auto 40px;
+        padding: 0 20px;
+      }
+
+      @media (max-width: 576px) {
+        .quiz-container {
+          margin: 20px auto 20px;
+          padding: 0 16px;
+        }
+      }
+
+      /* ================= HEADER ================= */
+      .quiz-header {
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .quiz-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .quiz-header p {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      @media (max-width: 576px) {
+        .quiz-header {
+          padding: 18px 16px;
+          margin-bottom: 16px;
+        }
+        .quiz-header h2 {
+          font-size: 1.1rem;
+        }
+        .quiz-header p {
+          font-size: 0.8rem;
+        }
+      }
+
+      /* ================= QUIZ BOX (Accordion style) ================= */
+      .quiz-box {
+        background: white;
+        border-radius: 16px;
+        padding: 0;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.3s;
+      }
+
+      .quiz-box:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Question Header */
+      .quiz-question-header {
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+        padding: 18px 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        border-bottom: 1px solid #e8ecf4;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .quiz-question-header:hover {
+        background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+      }
+
+      .question-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .quiz-question {
+        flex: 1;
+        font-size: 15px;
+        font-weight: 600;
+        color: #2d3748;
+        line-height: 1.6;
+      }
+
+      .expand-icon {
+        font-size: 14px;
+        color: #a0aec0;
+        transition: transform 0.3s;
+      }
+
+      .quiz-box.expanded .expand-icon {
+        transform: rotate(180deg);
+      }
+
+      @media (max-width: 576px) {
+        .quiz-question-header {
+          padding: 14px 16px;
+        }
+        .question-icon {
+          width: 28px;
+          height: 28px;
+          min-width: 28px;
+          font-size: 13px;
+          border-radius: 8px;
+        }
+        .quiz-question {
+          font-size: 13px;
+          line-height: 1.5;
+        }
+      }
+
+      /* Options Container */
+      .options-container {
+        padding: 16px 20px 20px;
+        display: none;
+      }
+
+      .quiz-box.expanded .options-container {
+        display: block;
+      }
+
+      @media (max-width: 576px) {
+        .options-container {
+          padding: 12px 16px 16px;
+        }
+      }
+
+      /* Option Item */
+      .option-item {
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        padding: 14px 16px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: all 0.25s;
+        position: relative;
+      }
+
+      .option-item:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        transform: translateX(4px);
+      }
+
+      .option-item:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Custom Radio */
+      .custom-radio {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        border: 2px solid #cbd5e1;
+        border-radius: 50%;
+        position: relative;
+        transition: all 0.25s;
+      }
+
+      .option-item input[type="radio"] {
+        display: none;
+      }
+
+      .option-item input[type="radio"]:checked ~ .custom-radio {
+        border-color: #667eea;
+        background: #667eea;
+      }
+
+      .option-item input[type="radio"]:checked ~ .custom-radio::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+      }
+
+      .option-text {
+        flex: 1;
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 576px) {
+        .option-item {
+          padding: 12px 14px;
+          gap: 10px;
+          margin-bottom: 8px;
+        }
+        .custom-radio {
+          width: 18px;
+          height: 18px;
+          min-width: 18px;
+        }
+        .option-text {
+          font-size: 13px;
+        }
+      }
+
+      /* Selected State */
+      .option-item.selected {
+        background: #eef2ff;
+        border-color: #667eea;
+      }
+
+      .option-item.selected .custom-radio {
+        border-color: #667eea;
+        background: #667eea;
+      }
+
+      /* Correct Answer */
+      .option-item.correct {
+        background: #dcfce7;
+        border-color: #22c55e;
+      }
+
+      .option-item.correct .custom-radio {
+        border-color: #22c55e;
+        background: #22c55e;
+      }
+
+      /* Wrong Answer */
+      .option-item.wrong {
+        background: #fee2e2;
+        border-color: #ef4444;
+      }
+
+      .option-item.wrong .custom-radio {
+        border-color: #ef4444;
+        background: #ef4444;
+      }
+
+      /* Submit Button */
+      .submit-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .btn-submit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 14px 40px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+      }
+
+      .btn-submit:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 576px) {
+        .submit-container {
+          margin-top: 20px;
+        }
+        .btn-submit {
+          width: 100%;
+          padding: 14px 30px;
+          font-size: 15px;
+        }
+      }
+
+      /* Result Modal */
+      .result-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 20px;
+      }
+
+      .result-modal.show {
+        display: flex;
+      }
+
+      .result-content {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        animation: modalPop 0.3s;
+      }
+
+      @keyframes modalPop {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .result-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+
+      .result-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 10px;
+      }
+
+      .result-score {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .btn-close-modal {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-close-modal:hover {
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 576px) {
+        .result-content {
+          padding: 30px 24px;
+        }
+        .result-icon {
+          font-size: 50px;
+        }
+        .result-title {
+          font-size: 20px;
+        }
+        .result-score {
+          font-size: 16px;
+        }
+      }
+</style>
+<style>
+    /* ===================== NEW RESULT MODAL ===================== */
+
+      .result-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 20000;
+      }
+
+      .result-modal.show {
+        display: flex;
+      }
+
+      .result-box {
+        width: 420px;
+        max-width: 90%;
+        background: white;
+        padding: 40px 30px;
+        border-radius: 22px;
+        position: relative;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        animation: popIn 0.35s ease;
+      }
+
+      /* Light confetti effect */
+      .result-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        /* background-image: url("https://i.imgur.com/8pVYqee.png"); */
+        opacity: 0.12;
+        pointer-events: none;
+      }
+
+      /* Green icon */
+      .result-icon {
+        width: 90px;
+        height: 90px;
+        background: #4ade80;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        margin: 0 auto 20px;
+        box-shadow: 0 8px 20px rgba(74, 222, 128, 0.45);
+      }
+
+      /* Title */
+      .result-title {
+        font-size: 26px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+      }
+
+      /* Score text */
+      .result-score {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 25px;
+      }
+
+      /* Button */
+      .result-btn {
+        background: #22c55e;
+        color: white;
+        padding: 14px 26px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        transition: 0.3s;
+      }
+
+      .result-btn:hover {
+        background: #16a34a;
+        transform: translateY(-2px);
+      }
+
+      /* Animation */
+      @keyframes popIn {
+        0% {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+</style>
+<style>
+      .music-card {
+        width: 100%;
+        margin-bottom: 20px;
+        background: #fff;
+        border-radius: 20px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+      }
+
+      .music-card img {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+
+      .music-info {
+        flex: 1;
+      }
+
+      .music-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #222;
+      }
+
+      .music-artist {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #5a77d4;
+        margin-top: 3px;
+      }
+
+      .play-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e2e9ff, #d0dcff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #333;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      .play-btn:hover {
+        transform: scale(1.08);
+      }
+    </style>
+   <style>
+    .footer{background:#f5f5f5;padding:4rem 0 2rem;}
+.footer-top{background:white;padding:3rem 0;margin-bottom:3rem;}
+.subscribe-section{max-width:600px;}
+.subscribe-title{font-size:1.75rem;font-weight:700;color:#1f2937;margin-bottom:1.5rem;line-height:1.3;}
+.subscribe-form{display:flex;gap:.5rem;}
+.subscribe-input{flex:1;padding:.875rem 1.25rem;border:1px solid #e5e7eb;border-radius:6px;font-size:.9375rem;background:#f9fafb;transition:.2s;}
+.subscribe-input:focus{outline:none;border-color:#3b82f6;background:white;box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+.subscribe-btn{padding:.875rem 2rem;background:#3b82f6;color:white;border:none;border-radius:6px;font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.subscribe-btn:hover{background:#2563eb;transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,130,246,.3);}
+.footer-content{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand{text-align:left;}
+.brand-title{font-size:1.5rem;font-weight:700;color:#1f2937;margin-bottom:1rem;text-align:left;}
+.brand-description{font-size:.875rem;color:#6b7280;line-height:1.6;margin-bottom:1.5rem;text-align:left;}
+.social-links{display:flex;gap:.75rem;justify-content:flex-start;}
+.social-link{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s;font-size:.875rem;}
+.social-link.linkedin{background:#0077b5;color:white;}
+.social-link.facebook{background:#1877f2;color:white;}
+.social-link.twitter{background:#1da1f2;color:white;}
+.social-link.youtube{background:#ff0000;color:white;}
+.social-link:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+.footer-column{text-align:left;}
+.footer-column-title{font-size:.875rem;font-weight:700;color:#1f2937;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;text-align:left;}
+.footer-links{list-style:none;padding:0;margin:0;}
+.footer-links li{margin-bottom:.75rem;}
+.footer-link{color:#6b7280;text-decoration:none;font-size:.9375rem;transition:.2s;display:inline-block;}
+.footer-link:hover{color:#3b82f6;padding-left:4px;}
+.footer-bottom{padding-top:2rem;border-top:1px solid #e5e7eb;text-align:center;}
+.copyright{font-size:.875rem;color:#9ca3af;margin:0;}
+@media(max-width:991.98px){
+.footer-content{grid-template-columns:1fr 1fr;gap:2rem;}
+.footer-brand{grid-column:1/-1;}
+}
+@media(max-width:767.98px){
+.footer{padding:3rem 0 1.5rem;}
+.footer-top{padding:2rem 0;margin-bottom:2rem;}
+.subscribe-title{font-size:1.5rem;}
+.subscribe-form{flex-direction:column;}
+.subscribe-btn{width:100%;}
+.footer-content{grid-template-columns:1fr;gap:2rem;}
+.footer-brand{grid-column:1;}
+.brand-title,.brand-description,.footer-column-title{text-align:left;}
+.social-links{justify-content:flex-start;}
+}
+@media(max-width:575.98px){
+.subscribe-input{padding:.75rem 1rem;font-size:.875rem;}
+.subscribe-btn{padding:.75rem 1.5rem;}
+}
+
+   </style>
+</head>
+<body>
+    <!-- Desktop Navigation -->
+    <nav class="navbar d-none d-md-block">
+        <div class="container px-4">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <div class="logo-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="brand-text">THEDUNG</span>
+                </div>
+
+                <!-- Day Navigator -->
+                <div class="day-navigator">
+                    <button class="nav-arrow">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <a href="index.html" class="day-btn active" onclick="selectDay(event, this)">TRANG CHỦ</a>
+                    <a href="courses.html" class="day-btn" onclick="selectDay(event, this)">KHÓA HỌC</a>
+                    <a href="music.html" class="day-btn" onclick="selectDay(event, this)">ÂM NHẠC</a>
+                    <a href="news.html" class="day-btn" onclick="selectDay(event, this)">TIN TỨC</a>
+                    <a href="contact.html" class="day-btn" onclick="selectDay(event, this)">LIÊN HỆ</a>
+                    <button class="nav-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <a href="login.html" id="desktopAuthBtn" class="icon-btn">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="navbar d-md-none">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <div class="logo-box">
+                       <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="brand-text">THEDUNG</span>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="d-flex align-items-center gap-1">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="icon-btn" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Day Navigator -->
+    <div class="mobile-day-nav d-md-none">
+        <div class="d-flex align-items-center gap-2">
+            <button class="nav-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="d-inline-flex gap-1">
+                <a href="index.html" class="day-btn mobile-day-btn active" onclick="selectDay(event, this)">Trang chủ</a>
+                <a href="courses.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Khóa học</a>
+                <a href="music.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Âm nhạc</a>
+                <a href="news.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Tin tức</a>
+                <a href="contact.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Liên hệ</a>
+            </div>
+            <button class="nav-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <div class="user-profile">
+                <div class="user-avatar">TD</div>
+                <div class="user-info">
+                    <p class="user-name">THEDUNG</p>
+                    <p class="user-plan">education</p>
+                </div>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Search Box -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm...">
+            </div>
+
+            <!-- Main Menu Section -->
+            <div class="menu-section">
+                <a href="index.html" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Trang chủ</span>
+                </a>
+                <a href="notifications.html" class="menu-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Thông báo</span>
+                    <span class="menu-badge">3</span>
+                </a>
+                <a href="messages.html" class="menu-item">
+                    <i class="fas fa-comment"></i>
+                    <span>Tin nhắn</span>
+                </a>
+            </div>
+
+            <!-- Shared Section -->
+            <div class="menu-section">
+                <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                    <span class="section-title mb-0">Nội Dung</span>
+                    <i class="fas fa-plus add-btn"></i>
+                </div>
+                <a href="courses.html" class="menu-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Khóa học</span>
+                </a>
+                <a href="music.html" class="menu-item">
+                    <i class="fas fa-music"></i>
+                    <span>Âm nhạc</span>
+                </a>
+                <a href="news.html" class="menu-item">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Tin tức</span>
+                </a>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="menu-section">
+                <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                    <span class="section-title mb-0">Danh Mục</span>
+                    <i class="fas fa-plus add-btn"></i>
+                </div>
+                <a href="#" class="project-item">
+                    <span class="project-dot purple"></span>
+                    <span>Lập trình</span>
+                </a>
+                <a href="#" class="project-item">
+                    <span class="project-dot pink"></span>
+                    <span>Thiết kế</span>
+                </a>
+                <a href="#" class="project-item">
+                    <span class="project-dot orange"></span>
+                    <span>Marketing</span>
+                </a>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <!-- Bottom Menu -->
+            <div class="bottom-menu">
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Cài đặt</span>
+                </a>
+                <a href="help.html" class="menu-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Trợ giúp</span>
+                </a>
+                <a href="contact.html" class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </div>
+
+            <!-- User Footer -->
+            <a href="login.html" class="user-footer">
+                <div class="user-footer-avatar">AL</div>
+                <div class="user-footer-info">
+                    <p class="user-footer-name">Đăng nhập</p>
+                    <p class="user-footer-email">student@edufun.com</p>
+                </div>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- MAIN QUIZ -->
+    <div class="quiz-container">
+      <!-- <div class="quiz-header">
+        <h2>📚 Làm bài trắc nghiệm</h2>
+        <p>Nhấn vào từng câu hỏi để mở rộng và chọn đáp án</p>
+      </div> -->
+      <div class="music-card">
+        <img
+          src="https://i.pinimg.com/1200x/af/39/46/af39464bd4b804f315f1ed5483403dde.jpg"
+        />
+
+        <div class="music-info">
+          <div class="music-title">Quan trọng nhắc lại 3 lần,OK???</div>
+          <div class="music-artist">Không làm được thì chọn toàn C...</div>
+        </div>
+
+        <div class="play-btn" id="playBtn">▶</div>
+
+        <!-- AUDIO -->
+        <audio id="audioPlayer" src="audio/c.mp3"></audio>
+      </div>
+      
+
+      <div id="quizArea">
+        <div style="text-align: center; color: white; padding: 40px">
+          <i class="fas fa-spinner fa-spin" style="font-size: 40px"></i>
+          <p style="margin-top: 20px">Đang tải đề...</p>
+        </div>
+      </div>
+
+      <div class="submit-container">
+        <button class="btn-submit" onclick="submitQuiz()">
+          <i class="fas fa-paper-plane"></i> Nộp bài
+        </button>
+      </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div class="result-modal" id="resultModal">
+      <div class="result-box">
+        <div class="result-icon">
+          <i class="fas fa-check"></i>
+        </div>
+
+        <div class="result-title" id="resultTitle">Wowzer!</div>
+
+        <div class="result-score" id="resultScore">Bạn đúng 0/0 câu (0%)</div>
+
+        <button class="result-btn" onclick="closeModal()">TIẾP TỤC</button>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Subscribe Section -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="subscribe-section">
+                            <h2 class="subscribe-title">Đăng ký để nhận<br>ưu đãi đặc biệt</h2>
+                            <form class="subscribe-form">
+                                <input type="email" class="subscribe-input" placeholder="Email address" required>
+                                <button type="submit" class="subscribe-btn">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Content -->
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <h3 class="brand-title">THEDUNG</h3>
+                    <p class="brand-description">
+                        là nền tảng kết hợp kiến thức và sự vui nhộn, cung cấp bài học trực quan. Người dùng có thể vừa học, vừa thư giãn qua trò chơi, giúp việc học trở nên dễ tiếp thu và thú vị hơn.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link twitter" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- On Our Site Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">On Our Site</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Trang chủ</a></li>
+                        <li><a href="#" class="footer-link">Khóa học</a></li>
+                        <li><a href="#" class="footer-link">Âm nhạc</a></li>
+                        <li><a href="#" class="footer-link">Tin tức</a></li>
+                        <li><a href="#" class="footer-link">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Khóa học</a></li>
+                        <li><a href="#" class="footer-link">Âm nhạc</a></li>
+                        <li><a href="#" class="footer-link">Phim ảnh</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:arshakir123@gmail.com" class="footer-link">luongthedung@gmail.com</a></li>
+                        <li><a href="tel:+646-987-213" class="footer-link">+0919844429</a></li>
+                        <li><a href="#" class="footer-link">Hương Khê - Hà Tĩnh</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Thedung. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+ 
+    <script>
+        function selectDay(event, element) {
+            // Prevent default only for demo purposes - remove this line in production
+            // event.preventDefault();
+            
+            // Remove active from all day buttons
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            
+            // Add active to clicked element and its counterpart
+            const linkText = element.textContent.trim();
+            document.querySelectorAll('.day-btn').forEach(b => {
+                if (b.textContent.trim() === linkText) {
+                    b.classList.add('active');
+                }
+            });
+        }
+    </script>
+    <!-- QUIZ SCRIPT -->
+    <script>
+      let questions = [];
+
+      const params = new URLSearchParams(window.location.search);
+      let quizFile = params.get("file");
+
+      if (!quizFile) {
+        document.getElementById("quizArea").innerHTML = `
+    <div style="background:white; padding:30px; border-radius:16px; text-align:center;">
+      <p style="color:#ef4444; font-size:16px;">❌ Không có file đề!</p>
+    </div>
+  `;
+      }
+
+      async function loadQuiz() {
+        try {
+          let res = await fetch(quizFile + "?v=" + Date.now());
+          questions = await res.json();
+
+          let html = "";
+          questions.forEach((q, i) => {
+            html += `
+      <div class="quiz-box" id="box${i}">
+        
+        <div class="quiz-question-header" onclick="toggleBox(${i})">
+          <div class="question-icon">${i + 1}</div>
+          <div class="quiz-question">${q.question}</div>
+          <div class="expand-icon"><i class="fas fa-chevron-down"></i></div>
+        </div>
+
+        <div class="options-container">
+          <label class="option-item">
+            <input type="radio" name="q${i}" value="A" onchange="markSelect(this)">
+            <div class="custom-radio"></div>
+            <span class="option-text">A. ${q.A}</span>
+          </label>
+
+          <label class="option-item">
+            <input type="radio" name="q${i}" value="B" onchange="markSelect(this)">
+            <div class="custom-radio"></div>
+            <span class="option-text">B. ${q.B}</span>
+          </label>
+
+          <label class="option-item">
+            <input type="radio" name="q${i}" value="C" onchange="markSelect(this)">
+            <div class="custom-radio"></div>
+            <span class="option-text">C. ${q.C}</span>
+          </label>
+
+          <label class="option-item">
+            <input type="radio" name="q${i}" value="D" onchange="markSelect(this)">
+            <div class="custom-radio"></div>
+            <span class="option-text">D. ${q.D}</span>
+          </label>
+        </div>
+
+      </div>`;
+          });
+
+          document.getElementById("quizArea").innerHTML = html;
+
+          // // Expand first question
+          // if(questions.length > 0) {
+          //   document.getElementById('box0').classList.add('expanded');
+          // }
+          // Mở toàn bộ câu hỏi khi vào trang
+          questions.forEach((_, i) => {
+            document.getElementById(`box${i}`).classList.add("expanded");
+          });
+        } catch {
+          document.getElementById("quizArea").innerHTML = `
+      <div style="background:white; padding:30px; border-radius:16px; text-align:center;">
+        <p style="color:#ef4444; font-size:16px; font-weight:bold">Chưa có đề, vui lòng chờ Admin cập nhật</p>
+      </div>
+    `;
+        }
+      }
+
+      loadQuiz();
+
+      // Toggle accordion
+      function toggleBox(index) {
+        const box = document.getElementById(`box${index}`);
+        box.classList.toggle("expanded");
+      }
+
+      // Mark selected option
+      function markSelect(input) {
+        let parent = input.closest(".options-container");
+        let opts = parent.querySelectorAll(".option-item");
+        opts.forEach((o) => o.classList.remove("selected"));
+        input.parentElement.classList.add("selected");
+      }
+
+      // Submit Quiz
+      function submitQuiz() {
+        let score = 0;
+
+        questions.forEach((q, i) => {
+          let chosen = document.querySelector(`input[name="q${i}"]:checked`);
+          let items = document.querySelectorAll(`input[name="q${i}"]`);
+
+          // Expand all boxes to show results
+          document.getElementById(`box${i}`).classList.add("expanded");
+
+          items.forEach((radio) => {
+            let box = radio.parentElement;
+            box.classList.remove("correct", "wrong", "selected");
+
+            if (radio.value === q.correct) {
+              box.classList.add("correct");
+            }
+
+            if (chosen && radio === chosen && chosen.value !== q.correct) {
+              box.classList.add("wrong");
+            }
+          });
+
+          if (chosen && chosen.value === q.correct) score++;
+        });
+
+        // Show result modal
+        showResultModal(score, questions.length);
+      }
+
+      function showResultModal(score, total) {
+        const modal = document.getElementById("resultModal");
+        const title = document.getElementById("resultTitle");
+        const scoreText = document.getElementById("resultScore");
+        const percent = Math.round((score / total) * 100);
+
+        if (percent >= 80) {
+          title.textContent = "Xuất sắc!";
+        } else if (percent >= 50) {
+          title.textContent = "Khá tốt!";
+        } else {
+          title.textContent = "Cố gắng hơn nhé!";
+        }
+
+        scoreText.innerHTML = `Bạn đúng <b>${score}</b> / ${total} câu (${percent}%)`;
+
+        modal.classList.add("show");
+      }
+
+      function closeModal() {
+        document.getElementById("resultModal").classList.remove("show");
+      }
+    </script>
+    <script>
+      const audio = document.getElementById("audioPlayer");
+      const playBtn = document.getElementById("playBtn");
+
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          playBtn.textContent = "⏸";
+        } else {
+          audio.pause();
+          playBtn.textContent = "▶";
+        }
+      });
+    </script>
+</body>
+</html>

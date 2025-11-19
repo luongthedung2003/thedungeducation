@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THEDUNG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+   <style>
+    :root{--teal-color:#14b8a6;--purple-color:#a855f7;}a{text-decoration:none;}body{background:#f8f9fa;font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",sans-serif;}
+.navbar{background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1);padding:.75rem 0;}
+.logo-box{width:40px;height:40px;background:linear-gradient(135deg,#2dd4bf,#14b8a6);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 6px rgba(20,184,166,0.3);}
+.logo-box i{color:white;font-size:20px;}
+.brand-text{font-size:1.25rem;font-weight:600;color:#1f2937;margin-left:.75rem;}
+.day-navigator{background:#f8f9fa;border-radius:12px;padding:.5rem;display:flex;align-items:center;gap:1rem;}
+.day-btn{padding:.5rem 1rem;border:none;background:transparent;border-radius:8px;font-size:.875rem;font-weight:500;color:#6b7280;transition:all .2s;white-space:nowrap;}
+.day-btn:hover{background:white;}
+.day-btn.active{background:var(--teal-color);color:white;box-shadow:0 4px 6px rgba(20,184,166,0.3);}
+.nav-arrow{width:32px;height:32px;border:none;background:transparent;border-radius:8px;color:#6b7280;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.nav-arrow:hover{background:white;}
+.icon-btn{width:40px;height:40px;border:none;background:transparent;border-radius:8px;color:#6b7280;display:flex;align-items:center;justify-content:center;position:relative;transition:all .2s;}
+.icon-btn:hover{background:#f3f4f6;}
+.notification-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:#ef4444;border-radius:50%;}
+.events-btn{background:linear-gradient(135deg,#c084fc,#a855f7);color:white;padding:.625rem 1.25rem;border:none;border-radius:12px;font-weight:500;box-shadow:0 4px 6px rgba(168,85,247,0.3);transition:all .2s;}
+.events-btn:hover{background:linear-gradient(135deg,#a855f7,#9333ea);transform:translateY(-1px);}
+.mobile-day-nav{background:#f8f9fa;padding:.5rem;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}
+.mobile-day-nav::-webkit-scrollbar{display:none;}
+.mobile-day-btn{padding:.5rem .75rem;font-size:.75rem;display:inline-block;}
+.demo-toggle{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:.5rem 1rem;font-size:.875rem;color:#6b7280;transition:all .2s;}
+.demo-toggle:hover{background:#f9fafb;}
+@media(max-width:767.98px){
+.logo-box{width:36px;height:36px;}
+.logo-box i{font-size:18px;}
+.brand-text{font-size:1.125rem;}
+.icon-btn{width:36px;height:36px;}
+}
+.offcanvas-end{width:100%!important;max-width:320px!important;}
+.offcanvas-header{background:white;border-bottom:1px solid #f0f0f0;padding:1rem 1.25rem;}
+.user-profile{display:flex;align-items:center;gap:.75rem;padding:.5rem;background:#f8f9fa;border-radius:8px;cursor:pointer;transition:.2s;}
+.user-profile:hover{background:#e9ecef;}
+.user-avatar{width:40px;height:40px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:1rem;}
+.user-info{flex:1;}
+.user-name{font-size:.875rem;font-weight:600;color:#1f2937;margin:0;}
+.user-plan{font-size:.75rem;color:#6b7280;margin:0;}
+.offcanvas-title{font-weight:600;font-size:1rem;margin:0;}
+.offcanvas-header .btn-close{opacity:.5;font-size:.875rem;}
+.offcanvas-body{background:white;padding:1rem;}
+.search-box{position:relative;margin-bottom:1rem;}
+.search-box input{width:100%;padding:.625rem .875rem .625rem 2.5rem;border:1px solid #e5e7eb;border-radius:8px;font-size:.875rem;background:#f9fafb;transition:.2s;}
+.search-box input:focus{outline:none;border-color:#667eea;background:white;}
+.search-box i{position:absolute;left:.875rem;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:.875rem;}
+.menu-section{margin-bottom:1.5rem;}
+.section-title{font-size:.75rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;padding:0 .5rem;}
+.menu-item{display:flex;align-items:center;gap:.75rem;padding:.625rem .75rem;border-radius:8px;text-decoration:none;color:#4b5563;font-size:.875rem;font-weight:500;transition:.2s;margin-bottom:.25rem;position:relative;}
+.menu-item:hover{background:#f3f4f6;color:#1f2937;}
+.menu-item.active{background:#f3f4f6;color:#667eea;}
+.menu-item i{width:20px;font-size:1rem;color:#6b7280;}
+.menu-item.active i{color:#667eea;}
+.menu-badge{margin-left:auto;background:#10b981;color:white;font-size:.625rem;font-weight:600;padding:.125rem .375rem;border-radius:4px;}
+.add-btn{color:#9ca3af;font-size:1rem;margin-left:auto;cursor:pointer;transition:.2s;}
+.add-btn:hover{color:#667eea;}
+.project-item{display:flex;align-items:center;gap:.75rem;padding:.625rem .75rem;border-radius:8px;text-decoration:none;color:#4b5563;font-size:.875rem;font-weight:500;transition:.2s;margin-bottom:.25rem;}
+.project-item:hover{background:#f3f4f6;color:#1f2937;}
+.project-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.project-dot.purple{background:#a78bfa;}
+.project-dot.pink{background:#ec4899;}
+.project-dot.orange{background:#f59e0b;}
+.menu-divider{margin:1rem 0;border:none;height:1px;background:#f0f0f0;}
+.bottom-menu{border-top:1px solid #f0f0f0;padding-top:1rem;margin-top:auto;}
+.user-footer{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:#f9fafb;border-radius:8px;cursor:pointer;transition:.2s;text-decoration:none;margin-top:1rem;}
+.user-footer:hover{background:#f3f4f6;}
+.user-footer-avatar{width:36px;height:36px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:.875rem;}
+.user-footer-info{flex:1;}
+.user-footer-name{font-size:.875rem;font-weight:600;color:#1f2937;margin:0;}
+.user-footer-email{font-size:.75rem;color:#6b7280;margin:0;}
+.chevron-icon{color:#9ca3af;font-size:.875rem;}
+@media(max-width:767.98px){
+.offcanvas-end{max-width:100%!important;}
+.logo-box{width:36px;height:36px;}
+.logo-box i{font-size:18px;}
+.brand-text{font-size:1.125rem;}
+.icon-btn{width:36px;height:36px;}
+}
+   </style>
+   <style>
+    .footer{background:#f5f5f5;padding:4rem 0 2rem;}
+.footer-top{background:white;padding:3rem 0;margin-bottom:3rem;}
+.subscribe-section{max-width:600px;}
+.subscribe-title{font-size:1.75rem;font-weight:700;color:#1f2937;margin-bottom:1.5rem;line-height:1.3;}
+.subscribe-form{display:flex;gap:.5rem;}
+.subscribe-input{flex:1;padding:.875rem 1.25rem;border:1px solid #e5e7eb;border-radius:6px;font-size:.9375rem;background:#f9fafb;transition:.2s;}
+.subscribe-input:focus{outline:none;border-color:#3b82f6;background:white;box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+.subscribe-btn{padding:.875rem 2rem;background:#3b82f6;color:white;border:none;border-radius:6px;font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.subscribe-btn:hover{background:#2563eb;transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,130,246,.3);}
+.footer-content{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand{text-align:left;}
+.brand-title{font-size:1.5rem;font-weight:700;color:#1f2937;margin-bottom:1rem;text-align:left;}
+.brand-description{font-size:.875rem;color:#6b7280;line-height:1.6;margin-bottom:1.5rem;text-align:left;}
+.social-links{display:flex;gap:.75rem;justify-content:flex-start;}
+.social-link{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s;font-size:.875rem;}
+.social-link.linkedin{background:#0077b5;color:white;}
+.social-link.facebook{background:#1877f2;color:white;}
+.social-link.twitter{background:#1da1f2;color:white;}
+.social-link.youtube{background:#ff0000;color:white;}
+.social-link:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+.footer-column{text-align:left;}
+.footer-column-title{font-size:.875rem;font-weight:700;color:#1f2937;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;text-align:left;}
+.footer-links{list-style:none;padding:0;margin:0;}
+.footer-links li{margin-bottom:.75rem;}
+.footer-link{color:#6b7280;text-decoration:none;font-size:.9375rem;transition:.2s;display:inline-block;}
+.footer-link:hover{color:#3b82f6;padding-left:4px;}
+.footer-bottom{padding-top:2rem;border-top:1px solid #e5e7eb;text-align:center;}
+.copyright{font-size:.875rem;color:#9ca3af;margin:0;}
+@media(max-width:991.98px){
+.footer-content{grid-template-columns:1fr 1fr;gap:2rem;}
+.footer-brand{grid-column:1/-1;}
+}
+@media(max-width:767.98px){
+.footer{padding:3rem 0 1.5rem;}
+.footer-top{padding:2rem 0;margin-bottom:2rem;}
+.subscribe-title{font-size:1.5rem;}
+.subscribe-form{flex-direction:column;}
+.subscribe-btn{width:100%;}
+.footer-content{grid-template-columns:1fr;gap:2rem;}
+.footer-brand{grid-column:1;}
+.brand-title,.brand-description,.footer-column-title{text-align:left;}
+.social-links{justify-content:flex-start;}
+}
+@media(max-width:575.98px){
+.subscribe-input{padding:.75rem 1rem;font-size:.875rem;}
+.subscribe-btn{padding:.75rem 1.5rem;}
+}
+
+   </style>
+
+   <style>
+    .auth-container {
+            display: flex;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            min-height: 600px;
+        }
+
+        /* Left Side - Illustration */
+        .auth-left {
+            flex: 1;
+            background: linear-gradient(135deg, #7c8bea 0%, #8b7fdb 100%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge-time {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .badge-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .badge-label {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .auth-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .illustration {
+            width: 100%;
+            max-width: 350px;
+            margin-top: 2rem;
+        }
+
+        .illustration img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Right Side - Form */
+        .auth-right {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .language-selector {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .language-selector:hover {
+            color: #374151;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 0.9375rem;
+            transition: all 0.2s;
+            background: #f9fafb;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .toggle-password:hover {
+            color: #6b7280;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-wrapper input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .checkbox-label a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .divider {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn i {
+            font-size: 1.25rem;
+        }
+
+        .social-btn.google i { color: #ea4335; }
+        .social-btn.facebook i { color: #1877f2; }
+        .social-btn.instagram i { color: #e4405f; }
+        .social-btn.twitter i { color: #1da1f2; }
+        .social-btn.linkedin i { color: #0077b5; }
+
+        .switch-text {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .switch-link {
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 767.98px) {
+            body {
+                padding: 1rem;
+                background: white;
+            }
+
+            .auth-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .auth-left {
+                display: none;
+            }
+
+            .auth-right {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .language-selector {
+                position: static;
+                justify-content: flex-end;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .auth-right {
+                padding: 1.5rem 1rem;
+            }
+
+            .social-btn {
+                width: 44px;
+                height: 44px;
+            }
+        }
+   </style>
+</head>
+<body>
+    <!-- Desktop Navigation -->
+    <nav class="navbar d-none d-md-block">
+        <div class="container px-4">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <div class="logo-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="brand-text">THEDUNG</span>
+                </div>
+
+                <!-- Day Navigator -->
+                <div class="day-navigator">
+                    <button class="nav-arrow">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <a href="index.html" class="day-btn active" onclick="selectDay(event, this)">TRANG CHỦ</a>
+                    <a href="courses.html" class="day-btn" onclick="selectDay(event, this)">KHÓA HỌC</a>
+                    <a href="music.html" class="day-btn" onclick="selectDay(event, this)">ÂM NHẠC</a>
+                    <a href="news.html" class="day-btn" onclick="selectDay(event, this)">TIN TỨC</a>
+                    <a href="contact.html" class="day-btn" onclick="selectDay(event, this)">LIÊN HỆ</a>
+                    <button class="nav-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button id="desktopAuthBtn" class="icon-btn">
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="navbar d-md-none">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <div class="logo-box">
+                       <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="brand-text">THEDUNG</span>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="d-flex align-items-center gap-1">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="icon-btn" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Day Navigator -->
+    <div class="mobile-day-nav d-md-none">
+        <div class="d-flex align-items-center gap-2">
+            <button class="nav-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="d-inline-flex gap-1">
+                <a href="index.html" class="day-btn mobile-day-btn active" onclick="selectDay(event, this)">Trang chủ</a>
+                <a href="courses.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Khóa học</a>
+                <a href="music.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Âm nhạc</a>
+                <a href="news.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Tin tức</a>
+                <a href="contact.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Liên hệ</a>
+            </div>
+            <button class="nav-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <div class="user-profile">
+                <div class="user-avatar">TD</div>
+                <div class="user-info">
+                    <p class="user-name">THEDUNG</p>
+                    <p class="user-plan">education</p>
+                </div>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Search Box -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm...">
+            </div>
+
+            <!-- Main Menu Section -->
+            <div class="menu-section">
+                <a href="index.html" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Trang chủ</span>
+                </a>
+                <a href="notifications.html" class="menu-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Thông báo</span>
+                    <span class="menu-badge">3</span>
+                </a>
+                <a href="messages.html" class="menu-item">
+                    <i class="fas fa-comment"></i>
+                    <span>Tin nhắn</span>
+                </a>
+            </div>
+
+            <!-- Shared Section -->
+            <div class="menu-section">
+                <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                    <span class="section-title mb-0">Nội Dung</span>
+                    <i class="fas fa-plus add-btn"></i>
+                </div>
+                <a href="courses.html" class="menu-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Khóa học</span>
+                </a>
+                <a href="music.html" class="menu-item">
+                    <i class="fas fa-music"></i>
+                    <span>Âm nhạc</span>
+                </a>
+                <a href="news.html" class="menu-item">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Tin tức</span>
+                </a>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="menu-section">
+                <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                    <span class="section-title mb-0">Danh Mục</span>
+                    <i class="fas fa-plus add-btn"></i>
+                </div>
+                <a href="#" class="project-item">
+                    <span class="project-dot purple"></span>
+                    <span>Lập trình</span>
+                </a>
+                <a href="#" class="project-item">
+                    <span class="project-dot pink"></span>
+                    <span>Thiết kế</span>
+                </a>
+                <a href="#" class="project-item">
+                    <span class="project-dot orange"></span>
+                    <span>Marketing</span>
+                </a>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <!-- Bottom Menu -->
+            <div class="bottom-menu">
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Cài đặt</span>
+                </a>
+                <a href="help.html" class="menu-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Trợ giúp</span>
+                </a>
+                <a href="contact.html" class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </div>
+
+            <!-- User Footer -->
+            <a href="login.html" class="user-footer">
+                <div class="user-footer-avatar">AL</div>
+                <div class="user-footer-info">
+                    <p class="user-footer-name">Đăng nhập</p>
+                    <p class="user-footer-email">student@edufun.com</p>
+                </div>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+<div class="auth-container container my-4">
+        <!-- Left Side - Illustration -->
+        <div class="auth-left">
+            <div class="badge-time">
+                <span class="badge-number">5</span>
+                <span class="badge-label">Minutes<br>School</span>
+            </div>
+            
+            <h2 class="auth-title">
+                Learn From World's<br>
+                Best Instructors 🎓<br>
+                Around The World.
+            </h2>
+            
+            <div class="illustration">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Desk -->
+                    <rect x="100" y="200" width="200" height="15" fill="#5a67d8" rx="3"/>
+                    <rect x="110" y="215" width="8" height="70" fill="#4c51bf" rx="2"/>
+                    <rect x="282" y="215" width="8" height="70" fill="#4c51bf" rx="2"/>
+                    
+                    <!-- Person -->
+                    <ellipse cx="200" cy="140" rx="25" ry="30" fill="#fbbf24"/>
+                    <rect x="185" y="170" width="30" height="40" fill="#3b82f6" rx="5"/>
+                    <rect x="175" y="180" width="15" height="35" fill="#2563eb" rx="3"/>
+                    <rect x="210" y="180" width="15" height="35" fill="#2563eb" rx="3"/>
+                    
+                    <!-- Computer -->
+                    <rect x="140" y="180" width="60" height="40" fill="#1f2937" rx="3"/>
+                    <rect x="145" y="185" width="50" height="30" fill="#4c51bf"/>
+                    
+                    <!-- Icons floating -->
+                    <circle cx="280" cy="120" r="20" fill="#ec4899" opacity="0.8"/>
+                    <text x="272" y="128" font-size="20">💎</text>
+                    
+                    <circle cx="320" cy="160" r="18" fill="#10b981" opacity="0.8"/>
+                    <text x="313" y="168" font-size="18">📧</text>
+                    
+                    <circle cx="120" cy="130" r="22" fill="#f59e0b" opacity="0.8"/>
+                    <text x="110" y="140" font-size="22">🚀</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Right Side - Form -->
+        <div class="auth-right">
+            <div class="language-selector">
+                <span>English (US)</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signupForm" class="fade-in">
+                <div class="form-header">
+                    <h2 class="form-title">Tạo tài khoản</h2>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Tên của bạn</label>
+                        <input type="text" class="form-control" placeholder="Nhập họ tên của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Địa chỉ email</label>
+                        <input type="email" class="form-control" placeholder="Nhập email của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mật khẩu</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control" id="signupPassword" placeholder="Nhập mật khẩu">
+                            <button type="button" class="toggle-password" onclick="togglePassword('signupPassword')">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="terms">
+                        <label class="checkbox-label" for="terms">
+                            Tôi đồng ý <a href="#">với chính sách</a> bảo mật <a href="#">của hệ thống</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Đăng ký</button>
+                </form>
+
+                <div class="divider">Hoặc đăng nhập bằng</div>
+
+                <div class="social-login">
+                    <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <p class="switch-text">
+                    Bạn đã có tài khoản? <a class="switch-link" onclick="switchToLogin()">Đăng nhập</a>
+                </p>
+            </div>
+
+            <!-- Login Form (Hidden by default) -->
+            <div id="loginForm" style="display: none;">
+                <div class="form-header">
+                    <h2 class="form-title">Chào mừng trở lại!</h2>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Địa chỉ Email</label>
+                        <input type="email" class="form-control" placeholder="Nhập email của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mật khẩu</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Nhập mật khẩu">
+                            <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="remember">
+                        <label class="checkbox-label" for="remember">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Đăng nhập</button>
+                </form>
+
+                <div class="divider">Hoặc đăng nhập bằng</div>
+
+                <div class="social-login">
+                    <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <p class="switch-text">
+                    Bạn chưa có tài khoản? <a class="switch-link" onclick="switchToSignup()">Đăng ký</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Subscribe Section -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="subscribe-section">
+                            <h2 class="subscribe-title">Đăng ký để nhận<br>ưu đãi đặc biệt</h2>
+                            <form class="subscribe-form">
+                                <input type="email" class="subscribe-input" placeholder="Email address" required>
+                                <button type="submit" class="subscribe-btn">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Content -->
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <h3 class="brand-title">THEDUNG</h3>
+                    <p class="brand-description">
+                        là nền tảng kết hợp kiến thức và sự vui nhộn, cung cấp bài học trực quan. Người dùng có thể vừa học, vừa thư giãn qua trò chơi, giúp việc học trở nên dễ tiếp thu và thú vị hơn.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link twitter" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- On Our Site Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">On Our Site</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Trang chủ</a></li>
+                        <li><a href="#" class="footer-link">Khóa học</a></li>
+                        <li><a href="#" class="footer-link">Âm nhạc</a></li>
+                        <li><a href="#" class="footer-link">Tin tức</a></li>
+                        <li><a href="#" class="footer-link">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Khóa học</a></li>
+                        <li><a href="#" class="footer-link">Âm nhạc</a></li>
+                        <li><a href="#" class="footer-link">Phim ảnh</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:arshakir123@gmail.com" class="footer-link">luongthedung@gmail.com</a></li>
+                        <li><a href="tel:+646-987-213" class="footer-link">+0919844429</a></li>
+                        <li><a href="#" class="footer-link">Hương Khê - Hà Tĩnh</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Thedung. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function selectDay(event, element) {
+            // Prevent default only for demo purposes - remove this line in production
+            // event.preventDefault();
+            
+            // Remove active from all day buttons
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            
+            // Add active to clicked element and its counterpart
+            const linkText = element.textContent.trim();
+            document.querySelectorAll('.day-btn').forEach(b => {
+                if (b.textContent.trim() === linkText) {
+                    b.classList.add('active');
+                }
+            });
+        }
+    </script>
+    <script>
+        function switchToLogin() {
+            const signupForm = document.getElementById('signupForm');
+            const loginForm = document.getElementById('loginForm');
+            
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            loginForm.classList.add('fade-in');
+            
+            setTimeout(() => {
+                loginForm.classList.remove('fade-in');
+            }, 500);
+        }
+
+        function switchToSignup() {
+            const signupForm = document.getElementById('signupForm');
+            const loginForm = document.getElementById('loginForm');
+            
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            signupForm.classList.add('fade-in');
+            
+            setTimeout(() => {
+                signupForm.classList.remove('fade-in');
+            }, 500);
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

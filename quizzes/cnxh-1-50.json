@@ -1,0 +1,407 @@
+[
+  {
+    "question": "Tính dân tộc của Nhà nước ta được thể hiện như thế nào dưới đây?",
+    "A": "Nhà nước ta là Nhà nước của các dân tộc.",
+    "B": "Mỗi dân tộc có bản sắc riêng của mình.",
+    "C": "Nhà nước chăm lo lợi ích mọi mặt cho các dân tộc ở Việt Nam.",
+    "D": "Dân tộc nào cũng có chữ viết riêng.",
+    "correct": "C"
+  },
+  {
+    "question": "Những yếu tố tư tưởng XHCN được xuất hiện từ khi nào?",
+    "A": "Chế độ tư bản chủ nghĩa ra đời.",
+    "B": "Sự xuất hiện chế độ tư hữu, xuất hiện giai cấp thống trị và bóc lột.",
+    "C": "Sự xuất hiện giai cấp công nhân.",
+    "D": "Thời cộng sản nguyên thủy.",
+    "correct": "B"
+  },
+  {
+    "question": "\"Tư liệu sản xuất chuyển thành tài sản chung, thì giai đình cả thể sẽ không còn là đơn vị kinh tế xã hội nữa. Việc nuôi dạy con cái trở thành công việc của xã hội\". Phát biểu này của ai?",
+    "A": "Hồ Chí Minh.",
+    "B": "C.Mác.",
+    "C": "V.I.Lênin.",
+    "D": "Ph.Ăngghen.",
+    "correct": "D"
+  },
+  {
+    "question": "Nội dung nào sau đây không thuộc nội dung bổ sung của Ph.Ăngghen và C.Mác vào chủ nghĩa xã hội khoa học thời kỳ 1848 đến Công xã Pari?",
+    "A": "Tư tưởng xóa bỏ quan hệ sản xuất tư bản, xây dựng quan hệ sản xuất XHCN.",
+    "B": "Tư tưởng dân tộc hóa nhà nước tư sản, thiết lập chuyên chính vô sản.",
+    "C": "Tư tưởng sự kết hợp đấu tranh giai cấp vô sản với phong trào đấu tranh của nông dân.",
+    "D": "Tư tưởng xây dựng khối liên minh giai cấp công nhân và giai cấp nông dân.",
+    "correct": "C"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất, giai cấp công nhân và nhân dân lao động sử dụng nhà nước của mình, do mình làm chủ như một công cụ có hiệu lực để:",
+    "A": "Đập tan nhà nước tư bản, xây dựng nhà nước XHCN.",
+    "B": "Thực thi quyền bình đẳng XHCN.",
+    "C": "Xây dựng xã hội hoàn toàn mới, thực thi quyền dân chủ XHCN.",
+    "D": "Cải tạo xã hội cũ và tổ chức xây dựng xã hội mới, theo lý tưởng và mục tiêu của CNXH.",
+    "correct": "D"
+  },
+  {
+    "question": "Chức năng \"trấn áp\" của nhà nước XHCN là để:",
+    "A": "Duy trì địa vị của giai cấp nắm quyền chiếm hữu tư liệu sản xuất chủ yếu của xã hội.",
+    "B": "Thể hiện quyền lực của giai cấp vô sản đối với giai cấp tư sản.",
+    "C": "Trấn áp giai cấp tư sản, trấn áp những phần tử chống đối giải cấp vô sản.",
+    "D": "Trấn áp giai cấp bóc lột đã bị lật đổ và phần tử chống đối để bảo vệ thành quả cách mạng.",
+    "correct": "D"
+  },
+  {
+    "question": "Ở phương Tây, dân tộc xuất hiện khi:",
+    "A": "Phương thức sản xuất tư bản chủ nghĩa được xác lập thay thế phương thức sản xuất phong kiến.",
+    "B": "Phương thức sản xuất phong kiến được xác lập thay thế phương thức sản xuất chiếm hữu nô lệ.",
+    "C": "Phương thức sản xuất tư bản chủ nghĩa được xác lập thay thế phương thức sản xuất tư bản chủ nghĩa.",
+    "D": "Phương thức sản xuất hàng hóa được xác lập thay thế phương thức sản xuất tư cung, tự cấp.",
+    "correct": "A"
+  },
+  {
+    "question": "Trong thời kỳ quá độ lên CNXH ở Việt Nam, nhiệm vụ trung tâm mà giai cấp công nhân phải lãnh đạo thực hiện là:",
+    "A": "Thực hiện dân chủ trong lĩnh vực chính trị.",
+    "B": "Thực hiện mục tiêu dân giàu, nước mạnh.",
+    "C": "Phát triển văn hoá, xây dựng con người XHCN.",
+    "D": "Phát triển kinh tế, tiến hành công nghiệp hoá, hiện đại hoá.",
+    "correct": "D"
+  },
+  {
+    "question": "Sự hình thành và phát triển của Chủ nghĩa xã hội khoa học trải qua những thời kỳ nào?",
+    "A": "C.Mác và Ph.Ăngghen phát triển chủ nghĩa xã hội khoa học; Lênin vận dụng và phát triển trong điều kiện mới; Sự vận dụng và phát triển sáng tạo sau Lênin đến nay.",
+    "B": "Trước công xã Pari; Sau công xã Pari; Trước cách mạng Tháng Mười Nga; Sau cách mạng Tháng Mười Nga; Sự vận dụng và phát triển sáng tạo sau Lênin đến nay.",
+    "C": "Trước công xã Pari; Sau công xã Pari; Trước cách mạng Tháng Mười Nga; Sau cách mạng Tháng Mười Nga.",
+    "D": "Tư 1848 đến Công xã Pari (1871); Sau Công xã Pari đến 1895; Trước cách mạng tháng Mười Nga; Sau cách mạng tháng Mười Nga.",
+    "correct": "D"
+  },
+  {
+    "question": "Ở nước ta, thực hiện có hiệu quả chính sách dân số là nhằm mục đích:",
+    "A": "Đảm bảo trật tự, an toàn xã hội.",
+    "B": "Ổn định mọi mặt đời sống xã hội, phát triển kinh tế.",
+    "C": "Điều chỉnh mọi biến động xã hội.",
+    "D": "Thúc đẩy sản xuất phát triển.",
+    "correct": "B"
+  },
+  {
+    "question": "Điều kiện khách quan để giai cấp công nhân có sứ mệnh lịch sử:",
+    "A": "Địa vị kinh tế và địa vị xã hội của giai cấp công nhân quy định.",
+    "B": "Địa vị chính trị và địa vị xã hội của giai cấp công nhân quy định.",
+    "C": "Địa vị chính trị, địa vị xã hội của giai cấp công nhân quy định.",
+    "D": "Địa vị lịch sử khách quan và nhiệm vụ lịch sử khách quan quy định.",
+    "correct": "A"
+  },
+  {
+    "question": "Quyền nào của công dân thể hiện dân chủ trong lĩnh vực xã hội?",
+    "A": "Quyền được hưởng bảo hiểm xã hội.",
+    "B": "Quyền được thông tin.",
+    "C": "Quyền tham gia quản lý nhà nước.",
+    "D": "Quyền khiếu nại.",
+    "correct": "A"
+  },
+  {
+    "question": "Nhân tố chủ quan quan trọng nhất để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử của mình là:",
+    "A": "Đảng Cộng sản.",
+    "B": "Sự phát triển về số lượng và chất lượng của công nhân.",
+    "C": "Liên minh giai cấp công nhân với giai cấp nông dân và các tầng lớp khác trong xã hội.",
+    "D": "Quốc tế Cộng sản.",
+    "correct": "A"
+  },
+  {
+    "question": "Để giải quyết việc làm, Nhà nước thường khuyến khích các doanh nghiệp:",
+    "A": "Tạo ra nhiều sản phẩm.",
+    "B": "Tạo ra nhiều việc làm mới.",
+    "C": "Tăng thu nhập cho người lao động.",
+    "D": "Bảo vệ người lao động.",
+    "correct": "B"
+  },
+  {
+    "question": "Giải quyết việc làm cho người lao động hiện nay ở nước ta nhằm:",
+    "A": "Phát huy được tiềm năng lao động.",
+    "B": "Sử dụng có hiệu quả nguồn lao động chất lượng cao.",
+    "C": "Nâng cao năng lực cạnh tranh của nền kinh tế.",
+    "D": "Huy động được nguồn vốn trong nhân dân.",
+    "correct": "A"
+  },
+  {
+    "question": "Điểm tương đồng giữa giai cấp công nhân hiện nay và giai cấp công nhân truyền thống thế kỷ XIX:",
+    "A": "Đều là LLSX hiện đại, chủ thể của sự dùng máy móc trong sản xuất.",
+    "B": "Đều là LLSX hàng đầu của xã hội đại công nghiệp, máy móc, phương tiện sản xuất tiến bộ.",
+    "C": "Đều là LLSX hàng đầu, bị giai cấp tư sản bóc lột, luôn là lực lượng đi đầu trong đấu tranh vì hoà bình, hợp tác và phát triển, dân chủ, tiến bộ XHCN.",
+    "D": "Đều là đại diện đi đầu cho chế độ phong kiến đấu tranh vì hoà bình, hợp tác và phát triển, vì dân sinh, dân chủ, tiến bộ và chủ nghĩa xã hội.",
+    "correct": "C"
+  },
+  {
+    "question": "Chủ nghĩa xã hội khoa học ra đời khi nào?",
+    "A": "Đầu Thế kỷ XIX.",
+    "B": "Những năm 40 của Thế kỷ XIX.",
+    "C": "Thế kỷ XX.",
+    "D": "Những năm 40 của Thế kỷ XX.",
+    "correct": "B"
+  },
+  {
+    "question": "Sứ mệnh lịch sử của giai cấp công nhân trên thế giới hiện nay về nội dung kinh tế – xã hội là:",
+    "A": "Giải quyết mâu thuẫn lợi ích cơ bản giữa nhân dân lao động với nhà nước tư bản.",
+    "B": "Giải quyết mâu thuẫn lợi ích cơ bản giữa nhân dân lao động với các tập đoàn kinh tế tư bản.",
+    "C": "Giải quyết mâu thuẫn lợi ích cơ bản giữa giai cấp vô sản với nhà nước tư bản, thiết lập nhà nước XHCN, thực hiện bình bầu và công bằng trong xã hội.",
+    "D": "Giải quyết mâu thuẫn lợi ích cơ bản giữa giai cấp công nhân với giai cấp tư sản, phân đấu cho việc xác lập một trật tự xã hội mới công bằng và bình đẳng.",
+    "correct": "D"
+  },
+  {
+    "question": "Chọn đáp án đúng nhất. Đặc điểm dân tộc Việt Nam hiện nay:",
+    "A": "Có sự chênh lệch về số dân giữa các tộc người.",
+    "B": "Dân tộc kinh được coi là tộc người chính.",
+    "C": "Các dân tộc có nền kinh tế phát triển đều nhau.",
+    "D": "Văn hoá các dân tộc được quy tụ lại với nhau.",
+    "correct": "A"
+  },
+  {
+    "question": "Sứ mệnh lịch sử của giai cấp công nhân Việt Nam hiện nay là:",
+    "A": "Giải quyết mâu thuẫn lợi ích cơ bản giữa giai cấp vô sản với nhà nước phong kiến, thiết lập nhà nước XHCN, thực hiện tiến bộ và công bằng, dân chủ xã hội.",
+    "B": "Giải quyết mâu thuẫn lợi ích cơ bản giữa giai cấp công nhân với giai cấp tư sản, phân đấu cho việc xác lập một trật tự xã hội mới công bằng và bình đẳng.",
+    "C": "Lực lượng đi đầu trong sự nghiệp công nghiệp hoá, hiện đại hoá đất nước vì mục tiêu dân giàu, nước mạnh, dân chủ, công bằng, văn minh.",
+    "D": "Thực hiện cuộc cách mạng dân tộc dân chủ và cách mạng xã hội chủ nghĩa trên nền tảng liên minh công – nông.",
+    "correct": "C"
+  },
+  {
+    "question": "Để thực hiện sứ mệnh lịch sử của giai cấp công nhân Việt Nam trong bối cảnh hiện nay được đặc biệt coi trọng hơn hết là:",
+    "A": "Xây dựng, phát triển giai cấp công nhân lớn mạnh, hiện đại.",
+    "B": "Xây dựng một giai cấp công nhân có trình độ nghề nghiệp cao.",
+    "C": "Bồi dưỡng trí thức, nâng cao trình độ, giai cấp công nhân hội nhập quốc tế.",
+    "D": "Công tác xây dựng, chỉnh đốn Đảng làm cho Đảng trong sạch, vững mạnh.",
+    "correct": "D"
+  },
+  
+  {
+    "question": "Nội dung: “Coi trọng giữ vững bản chất giai cấp công nhân và các nguyên tắc của CNXH trong suốt tiến trình đổi mới” nằm trong Đại hội nào?",
+    "A": "Đại hội đại biểu toàn quốc lần thứ XII (2016).",
+    "B": "Đại hội đại biểu toàn quốc lần thứ XI (2011).",
+    "C": "Đại hội đại biểu toàn quốc lần thứ X (2006).",
+    "D": "Đại hội đại biểu toàn quốc lần thứ VIII (1996).",
+    "correct": "A"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng. Chủ nghĩa xã hội là:",
+    "A": "Phong trào thực tiễn, phong trào đấu tranh của nhân dân lao động chống lại áp bức, bất công, chống lại giai cấp thống trị.",
+    "B": "Trào lưu tư tưởng, lý luận phản ánh lý tưởng giải phóng nhân dân lao động ra khỏi áp bức, bóc lột, bất công.",
+    "C": "Một khoa học về sứ mệnh lịch sử của giai cấp công nhân; một chế độ xã hội tốt đẹp.",
+    "D": "Một lý tưởng mới về xã hội do giai cấp công bằng và tự trị.",
+    "correct": "D"
+  },
+  {
+    "question": "Đối với tri thức cơ sở tư tưởng nào trong tiến trình đầy mạnh công nghiệp hoá, hiện đại hoá và hội nhập quốc tế của Việt Nam hiện nay?",
+    "A": "Đặc biệt quan trọng.",
+    "B": "Rất đặc biệt.",
+    "C": "Quan trọng.",
+    "D": "Quyết định.",
+    "correct": "A"
+  },
+  {
+    "question": "Chủ nghĩa xã hội theo thuật ngữ tiếng Anh được viết là:",
+    "A": "Socialism.",
+    "B": "Political Economic.",
+    "C": "Philosophy.",
+    "D": "Social democracy.",
+    "correct": "A"
+  },
+  {
+    "question": "Chọn đáp án KHÔNG đúng. Dân tộc là cộng đồng chính trị – xã hội có đặc trưng cơ bản:",
+    "A": "Có chung phương thức sinh hoạt kinh tế.",
+    "B": "Có lãnh thổ chung ổn định không bị chia cắt.",
+    "C": "Có sự quản lý của một nhà nước, nhà nước dân tộc độc lập.",
+    "D": "Có chung một ngôn ngữ giao tiếp.",
+    "correct": "D"
+  },
+  {
+    "question": "Học thuyết về hình thái kinh tế – xã hội của C.Mác và Ph.Ăngghen chỉ ra lịch sử loài người trải qua mấy hình thái kinh tế – xã hội?",
+    "A": "6 – Công sản nguyên thuỷ; Chiếm hữu nô lệ; Phong kiến chủ nghĩa; Chủ nghĩa tư bản; Chủ nghĩa xã hội; Công sản chủ nghĩa.",
+    "B": "5 – Công sản nguyên thuỷ; Chiếm hữu nô lệ; Phong kiến chủ nghĩa; Chủ nghĩa tư bản; Công sản chủ nghĩa.",
+    "C": "5 – Công sản nguyên thuỷ; Chiếm hữu nô lệ; Phong kiến chủ nghĩa; Chủ nghĩa tư bản; Xã hội chủ nghĩa.",
+    "D": "5 – Công sản nguyên thuỷ; Chiếm hữu nô lệ; Chủ nghĩa tư bản; Thời kỳ quá độ CNXH; Công sản chủ nghĩa.",
+    "correct": "B"
+  },
+  {
+    "question": "Quyền lao động thể hiện dân chủ trong lĩnh vực nào?",
+    "A": "Xã hội.",
+    "B": "Chính trị.",
+    "C": "Văn hóa.",
+    "D": "Kinh tế.",
+    "correct": "A"
+  },
+  {
+    "question": "Tính tất yếu thay thế hình thái kinh tế – xã hội tư bản sang cộng sản chủ nghĩa xuất phát từ điều gì quan trọng nhất?",
+    "A": "Sự phát triển của sản xuất tư bản chủ nghĩa.",
+    "B": "Sự phát triển của kiến trúc thượng tầng tư tưởng trong xã hội tư bản và sự thu hẹp của các giai cấp cũ.",
+    "C": "Sự phát triển của quan hệ sản xuất cộng sản chủ nghĩa phù hợp với lực lượng sản xuất tiến bộ của lực lượng sản xuất công nhân.",
+    "D": "Sự phát triển của lực lượng sản xuất và sự trưởng thành của tầng lớp công nhân.",
+    "correct": "D"
+  },
+  {
+    "question": "“Học thuyết của Mác là học thuyết vạn năng vì nó là một học thuyết chính xác”, đánh giá này của ai?",
+    "A": "Ph. Ăngghen.",
+    "B": "Hồ Chí Minh.",
+    "C": "D. Ricacdo.",
+    "D": "V.I. Lênin.",
+    "correct": "D"
+  },
+  {
+    "question": "Có mấy loại hình quá độ lên chủ nghĩa xã hội theo quan điểm của C.Mác và Ph.Ăngghen?",
+    "A": "1 (Từ hình thái kinh tế – xã hội chủ nghĩa tư bản lên hình thái kinh tế – xã hội cộng sản chủ nghĩa).",
+    "B": "2 (Từ hình thái kinh tế – xã hội phong kiến lên chủ nghĩa tư bản và từ CNTB lên CNXH).",
+    "C": "1 (Từ hình thái kinh tế – xã hội phong kiến lên hình thái kinh tế – xã hội cộng sản chủ nghĩa).",
+    "D": "2 (Từ hình thái kinh tế – xã hội phong kiến lên hình thái kinh tế – xã hội chủ nghĩa tư bản và lên chủ nghĩa xã hội; từ xã hội nguyên thủy lên chủ nghĩa cộng sản).",
+    "correct": "B"
+  },
+  {
+    "question": "Điều kiện ra đời của chủ nghĩa xã hội theo quan điểm của nhà sáng lập chủ nghĩa xã hội khoa học:",
+    "A": "Sự phát triển của lực lượng sản xuất, sự trưởng thành của giai cấp công nhân và cách mạng vô sản dưới sự lãnh đạo của giai cấp công nhân – Đảng Cộng sản.",
+    "B": "Sự phát triển của sản xuất, sự trưởng thành của các giai cấp công nhân và sự lãnh đạo của nhân dân.",
+    "C": "Sự phát triển của lực lượng sản xuất, sự trưởng thành của giai cấp công nhân nhưng không cần lãnh đạo của đảng.",
+    "D": "Sự phát triển của lực lượng sản xuất, không cần vai trò lãnh đạo của giai cấp công nhân.",
+    "correct": "A"
+  },
+  {
+    "question": "Những nội dung khái quát về mô hình Nhà nước pháp quyền XHCN Việt Nam được thể hiện trong:",
+    "A": "Cương lĩnh chính trị đầu tiên của Đảng.",
+    "B": "Chính Cương vắn tắt và sách lược vắn tắt.",
+    "C": "Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội.",
+    "D": "Cương lĩnh xây dựng đất nước thời kỳ công nghiệp hóa, hiện đại hóa.",
+    "correct": "C"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, cách mạng vô sản trên thực tế được thực hiện theo con đường nào?",
+    "A": "Đấu tranh chính trị.",
+    "B": "Đấu tranh vũ trang.",
+    "C": "Bạo lực vũ trang.",
+    "D": "Nhân đạo, hoà bình.",
+    "correct": "C"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, cách mạng vô sản từ lý thuyết có thể được thực hiện theo con đường nào?",
+    "A": "Đấu tranh chính trị.",
+    "B": "Đấu tranh chính trị và đấu tranh vũ trang.",
+    "C": "Bạo lực vũ trang.",
+    "D": "Nhân đạo, hoà bình.",
+    "correct": "D"
+  },
+  {
+    "question": "Chủ nghĩa xã hội mà nước ta đang xây dựng có mấy đặc trưng cơ bản?",
+    "A": "Tám đặc trưng.",
+    "B": "Bốn đặc trưng.",
+    "C": "Sáu đặc trưng.",
+    "D": "Mười đặc trưng.",
+    "correct": "A"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, đặc trưng cơ bản của giai đoạn đầu của xã hội cộng sản gồm mấy đặc trưng?",
+    "A": "4 đặc trưng.",
+    "B": "5 đặc trưng.",
+    "C": "6 đặc trưng.",
+    "D": "7 đặc trưng.",
+    "correct": "C"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, xã hội xã hội chủ nghĩa phải là xã hội:",
+    "A": "Giải phóng giai cấp, giải phóng dân tộc, giải phóng xã hội, giải phóng con người, tạo điều kiện để con người phát triển toàn diện.",
+    "B": "Giải phóng giai cấp nông dân, giải phóng xã hội, giải phóng con người, tạo điều kiện để con người phát triển toàn diện và tự do.",
+    "C": "Giải phóng giai cấp công nhân, giải phóng dân tộc, giải phóng con người, tạo điều kiện để con người phát triển toàn diện và tự do.",
+    "D": "Giải phóng giai cấp vô sản, giải phóng con người khỏi mọi áp bức, bóc lột, bất công, tạo điều kiện để con người phát triển tự do trên cơ sở tài tập thể.",
+    "correct": "A"
+  },
+  {
+    "question": "Trong tác phẩm 'Tuyên ngôn Đảng Cộng sản', sự khác biệt về kết giữa hình thái KTXH cộng sản chủ nghĩa với các hình thái KTXH ra đời trước là:",
+    "A": "Kinh tế có nền tảng khoa học, kỹ thuật phát triển cao, năng suất lao động cao, ngành khác biệt với xã hội chủ nghĩa.",
+    "B": "Con người làm chủ tồn tại xã hội do chính mình, do đó làm chủ tự nhiên, làm chủ cả bản thân mình trở thành người tự do.",
+    "C": "Con người không chỉ là sản phẩm của tự nhiên, chinh phục tự nhiên, chinh phục xã hội, trở thành mình để trở về xã hội.",
+    "D": "Quan hệ sản xuất phát triển, con người là trung tâm, lực lượng sản xuất phát triển, chinh phục tự nhiên, chinh phục xã hội.",
+    "correct": "B"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, đặc trưng thể hiện thuộc tính bản chất của chủ nghĩa xã hội là:",
+    "A": "Xã hội do giai cấp công nhân làm chủ.",
+    "B": "Xã hội do giai cấp vô sản làm chủ.",
+    "C": "Xã hội do lao động xã hội làm chủ.",
+    "D": "Xã hội do nhân dân lao động làm chủ.",
+    "correct": "D"
+  },
+  {
+    "question": "C.Mác và Ph.Ăngghen đã chỉ rõ: “buộc hình thái kinh tế – xã hội mới ra đời […]”. Chọn đáp án đúng nhất theo văn bản:",
+    "A": "Giai cấp vô sản biến thành giai cấp thống trị là giai cấp lãnh đạo chủ.",
+    "B": "Giai cấp tư sản biến thành giai cấp bị thống trị là giai cấp lao động.",
+    "C": "Giai cấp tư sản biến thành giai cấp bị thống trị là giai cấp nông dân.",
+    "D": "Giai cấp công nhân thay thế giai cấp tư sản giành lấy chính quyền lãnh đạo cách mạng.",
+    "correct": "A"
+  },
+  {
+    "question": "Nền sản xuất xã hội chủ nghĩa gắn liền với:",
+    "A": "Đạo đức.",
+    "B": "Phong tục.",
+    "C": "Truyền thống.",
+    "D": "Pháp luật.",
+    "correct": "D"
+  },
+  {
+    "question": "Đặc trưng về lĩnh vực kinh tế của chủ nghĩa xã hội là:",
+    "A": "Nền kinh tế phát triển cao, công nghiệp hoá, hiện đại hoá nhanh chóng.",
+    "B": "Đẩy mạnh công nghiệp hoá, hiện đại hoá nông nghiệp nông thôn, thúc đẩy nhanh chóng để có sự chuyển giao công nghệ với tư liệu sản xuất chủ yếu.",
+    "C": "Nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và chế độ công hữu về tư liệu sản xuất chủ yếu.",
+    "D": "Nền kinh tế phát triển cao, dựa trên khoa học công nghệ hiện đại và chế độ công hữu về tư liệu sản xuất chủ yếu.",
+    "correct": "C"
+  },
+  {
+    "question": "Hiện nay ở Việt Nam, để đảm bảo lợi ích của gia đình và sự phát triển bền vững của xã hội, thông điệp trong kế hoạch hoá gia đình là:",
+    "A": "Nên có từ 1 đến 2 con.",
+    "B": "Nên sinh đủ 2 con.",
+    "C": "Nên sinh 1 con.",
+    "D": "Nên sinh 1 trai, 1 gái.",
+    "correct": "B"
+  },
+  {
+    "question": "Theo quan điểm của V.I.Lênin, công thức cơ bản của nhà nước dưới chế độ xã hội, chọn đáp án đúng nhất:",
+    "A": "Chính quyền Xô viết + Trật tự Xô viết + Dân tộc Xô viết + Các tổ chức đặc biệt quản lý Xô viết → chủ nghĩa xã hội.",
+    "B": "Chính quyền cộng sản + Trật tự cộng sản + Phát triển đất nước cộng sản → chủ nghĩa xã hội.",
+    "C": "Chính quyền Xô viết + Trật tự xã hội + Kỹ thuật sản xuất + Các tổ chức của giai cấp vô sản + Người dân Xô viết → chủ nghĩa xã hội.",
+    "D": "Chính quyền Xô viết + Dân chủ bình đẳng + Kỹ thuật hiện đại + Pháp lý Xô viết + Các tổ chức đặc biệt → chủ nghĩa xã hội.",
+    "correct": "A"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, chủ nghĩa xã hội là nước kiểu mới mang bản chất của:",
+    "A": "Giai cấp vô sản, đại biểu cho lợi ích của giai cấp công nhân, nông dân, lao động trí thức.",
+    "B": "Giai cấp công nhân, đại biểu cho lợi ích của họ, quyền lực và ý chí của nhân dân lao động.",
+    "C": "Giai cấp nắm trong tay quyền lãnh đạo, đại biểu cho lợi ích của giai cấp thống trị tư sản.",
+    "D": "Nhân dân và các tầng lớp người lao động trong vai trò lãnh đạo xã hội.",
+    "correct": "B"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, nhà nước xã hội chủ nghĩa phải có tính chất:",
+    "A": "Chuyên chính giai cấp.",
+    "B": "Chuyên chính dân tộc.",
+    "C": "Chuyên chính vô sản.",
+    "D": "Của dân, do dân, vì dân.",
+    "correct": "C"
+  },
+  {
+    "question": "Theo quan điểm của các nhà sáng lập chủ nghĩa xã hội khoa học, nhà nước xã hội chủ nghĩa ra đời từ:",
+    "A": "Tầng lớp tinh thần, mục tiêu phát triển kinh tế.",
+    "B": "Tiến đề quan trọng cho sự phát triển kinh tế, văn hoá, xã hội.",
+    "C": "Tiến đề quan trọng cho sự phát triển kinh tế xã hội, văn hoá hoà bình.",
+    "D": "Nền tảng tinh thần, mục tiêu xã hội, trọng tâm là phát triển kinh tế.",
+    "correct": "A"
+  },
+  {
+    "question": "Theo quan điểm chủ nghĩa Mác – Lênin, CNTB lên CNXH từ:",
+    "A": "Quá độ chính trị.",
+    "B": "Quá độ kinh tế.",
+    "C": "Quá độ lịch sử tự bản.",
+    "D": "Quá độ.",
+    "correct": "A"
+  },
+  {
+    "question": "Ở Việt Nam, quá độ lên CNXH bao gồm TBCN, là thời kỳ quá độ từ chế độ cũ sang chế độ xã hội chủ nghĩa; trong thời kỳ đó có tồn tại gì?",
+    "A": "Thời kỳ quá độ không việc sau, không bóc lột.",
+    "B": "Thời kỳ quá độ vẫn còn tồn tại sự thống trị của tư bản, bóc lột, song quan hệ xã hội sẽ thay đổi theo từng giai đoạn.",
+    "C": "Thời kỳ quá độ vẫn còn tồn tại các giai cấp bóc lột không còn tồn tại bóc lột.",
+    "D": "Thời kỳ quá độ vẫn còn tồn tại bóc lột nhưng từng bước bị loại bỏ.",
+    "correct": "B"
+  }
+]
+
+
+
+

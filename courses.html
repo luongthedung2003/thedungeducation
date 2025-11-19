@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THEDUNG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+   <style>
+  
+    :root{--teal-color:#14b8a6;--purple-color:#a855f7;}a{text-decoration:none;}body{background:#f8f9fa;font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",sans-serif;}
+.navbar{background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1);padding:.75rem 0;}
+.logo-box{width:40px;height:40px;background:linear-gradient(135deg,#2dd4bf,#14b8a6);border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 6px rgba(20,184,166,0.3);}
+.logo-box i{color:white;font-size:20px;}
+.brand-text{font-size:1.25rem;font-weight:600;color:#1f2937;margin-left:.75rem;}
+.day-navigator{background:#f8f9fa;border-radius:12px;padding:.5rem;display:flex;align-items:center;gap:1rem;}
+.day-btn{padding:.5rem 1rem;border:none;background:transparent;border-radius:8px;font-size:.875rem;font-weight:500;color:#6b7280;transition:all .2s;white-space:nowrap;}
+.day-btn:hover{background:white;}
+.day-btn.active{background:var(--teal-color);color:white;box-shadow:0 4px 6px rgba(20,184,166,0.3);}
+.nav-arrow{width:32px;height:32px;border:none;background:transparent;border-radius:8px;color:#6b7280;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.nav-arrow:hover{background:white;}
+.icon-btn{width:40px;height:40px;border:none;background:transparent;border-radius:8px;color:#6b7280;display:flex;align-items:center;justify-content:center;position:relative;transition:all .2s;}
+.icon-btn:hover{background:#f3f4f6;}
+.notification-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:#ef4444;border-radius:50%;}
+.events-btn{background:linear-gradient(135deg,#c084fc,#a855f7);color:white;padding:.625rem 1.25rem;border:none;border-radius:12px;font-weight:500;box-shadow:0 4px 6px rgba(168,85,247,0.3);transition:all .2s;}
+.events-btn:hover{background:linear-gradient(135deg,#a855f7,#9333ea);transform:translateY(-1px);}
+.mobile-day-nav{background:#f8f9fa;padding:.5rem;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}
+.mobile-day-nav::-webkit-scrollbar{display:none;}
+.mobile-day-btn{padding:.5rem .75rem;font-size:.75rem;display:inline-block;}
+.demo-toggle{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:.5rem 1rem;font-size:.875rem;color:#6b7280;transition:all .2s;}
+.demo-toggle:hover{background:#f9fafb;}
+@media(max-width:767.98px){
+.logo-box{width:36px;height:36px;}
+.logo-box i{font-size:18px;}
+.brand-text{font-size:1.125rem;}
+.icon-btn{width:36px;height:36px;}
+}
+.offcanvas-end{width:100%!important;max-width:320px!important;}
+.offcanvas-header{background:white;border-bottom:1px solid #f0f0f0;padding:1rem 1.25rem;}
+.user-profile{display:flex;align-items:center;gap:.75rem;padding:.5rem;background:#f8f9fa;border-radius:8px;cursor:pointer;transition:.2s;}
+.user-profile:hover{background:#e9ecef;}
+.user-avatar{width:40px;height:40px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:1rem;}
+.user-info{flex:1;}
+.user-name{font-size:.875rem;font-weight:600;color:#1f2937;margin:0;}
+.user-plan{font-size:.75rem;color:#6b7280;margin:0;}
+.offcanvas-title{font-weight:600;font-size:1rem;margin:0;}
+.offcanvas-header .btn-close{opacity:.5;font-size:.875rem;}
+.offcanvas-body{background:white;padding:1rem;}
+.search-box{position:relative;margin-bottom:1rem;}
+.search-box input{width:100%;padding:.625rem .875rem .625rem 2.5rem;border:1px solid #e5e7eb;border-radius:8px;font-size:.875rem;background:#f9fafb;transition:.2s;}
+.search-box input:focus{outline:none;border-color:#667eea;background:white;}
+.search-box i{position:absolute;left:.875rem;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:.875rem;}
+.menu-section{margin-bottom:1.5rem;}
+.section-title{font-size:.75rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;padding:0 .5rem;}
+.menu-item{display:flex;align-items:center;gap:.75rem;padding:.625rem .75rem;border-radius:8px;text-decoration:none;color:#4b5563;font-size:.875rem;font-weight:500;transition:.2s;margin-bottom:.25rem;position:relative;}
+.menu-item:hover{background:#f3f4f6;color:#1f2937;}
+.menu-item.active{background:#f3f4f6;color:#667eea;}
+.menu-item i{width:20px;font-size:1rem;color:#6b7280;}
+.menu-item.active i{color:#667eea;}
+.menu-badge{margin-left:auto;background:#10b981;color:white;font-size:.625rem;font-weight:600;padding:.125rem .375rem;border-radius:4px;}
+.add-btn{color:#9ca3af;font-size:1rem;margin-left:auto;cursor:pointer;transition:.2s;}
+.add-btn:hover{color:#667eea;}
+.project-item{display:flex;align-items:center;gap:.75rem;padding:.625rem .75rem;border-radius:8px;text-decoration:none;color:#4b5563;font-size:.875rem;font-weight:500;transition:.2s;margin-bottom:.25rem;}
+.project-item:hover{background:#f3f4f6;color:#1f2937;}
+.project-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.project-dot.purple{background:#a78bfa;}
+.project-dot.pink{background:#ec4899;}
+.project-dot.orange{background:#f59e0b;}
+.menu-divider{margin:1rem 0;border:none;height:1px;background:#f0f0f0;}
+.bottom-menu{border-top:1px solid #f0f0f0;padding-top:1rem;margin-top:auto;}
+.user-footer{display:flex;align-items:center;gap:.75rem;padding:.75rem;background:#f9fafb;border-radius:8px;cursor:pointer;transition:.2s;text-decoration:none;margin-top:1rem;}
+.user-footer:hover{background:#f3f4f6;}
+.user-footer-avatar{width:36px;height:36px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:.875rem;}
+.user-footer-info{flex:1;}
+.user-footer-name{font-size:.875rem;font-weight:600;color:#1f2937;margin:0;}
+.user-footer-email{font-size:.75rem;color:#6b7280;margin:0;}
+.chevron-icon{color:#9ca3af;font-size:.875rem;}
+@media(max-width:767.98px){
+.offcanvas-end{max-width:100%!important;}
+.logo-box{width:36px;height:36px;}
+.logo-box i{font-size:18px;}
+.brand-text{font-size:1.125rem;}
+.icon-btn{width:36px;height:36px;}
+}
+   </style>
+<!-- <style>
+    .hero-section{padding:5rem 0 3rem;background:linear-gradient(180deg,#ffffff 0%,#f9fafb 100%);position:relative;overflow:hidden;}
+.badge-booking{display:inline-block;background:white;padding:.5rem 1.25rem;border-radius:20px;font-size:.875rem;color:#6b7280;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:2rem;border:1px solid #e5e7eb;}
+.hero-title{font-size:3.5rem;font-weight:800;color:#1f2937;line-height:1.2;margin-bottom:1.5rem;text-align:center;}
+.youtube-icon{display:inline-block;background:#ff0000;color:white;padding:.5rem 1rem;border-radius:8px;font-weight:700;margin:0 .25rem;}
+.hero-subtitle{font-size:1.125rem;color:#6b7280;margin-bottom:2.5rem;text-align:center;max-width:600px;margin-left:auto;margin-right:auto;}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;align-items:center;margin-bottom:3rem;}
+.btn-view-pricing{background:linear-gradient(135deg,#10b981,#059669);color:white;padding:.875rem 2rem;border:none;border-radius:8px;font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;display:inline-block;}
+.btn-view-pricing:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,.3);color:white;}
+.btn-our-works{color:#10b981;font-weight:600;font-size:1rem;text-decoration:none;border-bottom:2px solid #10b981;padding-bottom:.25rem;transition:.3s;}
+.btn-our-works:hover{color:#059669;border-bottom-color:#059669;}
+.stats-container{background:white;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);padding:1rem;display:flex;justify-content:space-around;align-items:center;max-width:900px;margin:0 auto 0;border:1px solid #f3f4f6;}
+.stat-item{text-align:center;padding:0 1rem;border-right:1px solid #e5e7eb;}
+.stat-item:last-child{border-right:none;}
+.stat-label{font-size:.875rem;color:#9ca3af;margin-bottom:.5rem;display:block;}
+.stat-value{font-size:1.75rem;font-weight:700;color:#1f2937;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.youtube-logo{color:#ff0000;font-size:1.5rem;}
+.star-rating{color:#fbbf24;font-size:1.25rem;}
+.thumbnails-container{position:relative;display:flex;justify-content:center;align-items:center;gap:2rem;perspective:1000px;padding:0 2rem;}
+.thumbnail{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.15);transition:.4s ease;cursor:pointer;}
+.thumbnail img{width:100%;height:100%;object-fit:cover;display:block;}
+.thumbnail-side{width:280px;height:180px;opacity:.7;transform:scale(.85) rotateY(10deg);}
+.thumbnail-side.left{transform:scale(.85) rotateY(10deg);}
+.thumbnail-side.right{transform:scale(.85) rotateY(-10deg);}
+.thumbnail-center{width:380px;height:240px;z-index:10;transform:scale(1);}
+.thumbnail:hover{transform:scale(1.05) translateY(-10px);box-shadow:0 25px 50px rgba(0,0,0,.2);}
+.thumbnail-center:hover{transform:scale(1.08) translateY(-10px);}
+.thumbnail-badge{position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,#ff6b6b,#ee5a6f);color:white;padding:.375rem .875rem;border-radius:20px;font-size:.75rem;font-weight:600;box-shadow:0 4px 12px rgba(255,107,107,.4);}
+
+@media(max-width:1199.98px){.thumbnail-center{width:340px;height:220px;}.thumbnail-side{width:260px;height:170px;}}
+@media(max-width:991.98px){.hero-title{font-size:2.75rem;}.stats-container{padding:1.5rem;}.stat-item{padding:0 1rem;}.stat-value{font-size:1.5rem;}.thumbnail-center{width:320px;height:200px;}.thumbnail-side{width:240px;height:160px;}.thumbnails-container{gap:1.5rem;}}
+@media(max-width:767.98px){.hero-section{padding:3rem 0 2rem;}.hero-title{font-size:2rem;margin-bottom:1rem;}.youtube-icon{display:inline;padding:.25rem .5rem;font-size:.9rem;}.hero-subtitle{font-size:1rem;margin-bottom:2rem;}.hero-buttons{flex-direction:column;gap:1rem;}.btn-view-pricing{width:100%;max-width:300px;}.stats-container{flex-direction:column;padding:1rem;gap:1.5rem;}.stat-item{border-right:none;border-bottom:1px solid #e5e7eb;padding:0.7rem 0;width:100%;}.stat-item:last-child{border-bottom:none;}.thumbnail-side{display:none;}.thumbnail-center{display: none;width:100%;max-width:400px;height:auto;aspect-ratio:16/10;}.thumbnails-container{padding:0 1rem;}}
+@media(max-width:575.98px){.hero-title{font-size:1.75rem;}.stat-value{font-size:1.2rem;margin-left: 80px;}.thumbnail-center{max-width:100%;}}
+
+</style> -->
+<style>
+    .hero-section{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,#f5f7fa,#e8f4f8);padding:80px 20px 60px;}
+.hero-bg-shape{position:absolute;z-index:1;opacity:.15;}
+.shape-1{width:400px;height:400px;background:linear-gradient(135deg,#4caf50,#81c784);border-radius:50%;top:-100px;right:-100px;filter:blur(80px);}
+.shape-2{width:350px;height:350px;background:linear-gradient(135deg,#2196f3,#64b5f6);border-radius:50%;bottom:-80px;left:-80px;filter:blur(80px);}
+.shape-3{width:300px;height:300px;background:linear-gradient(135deg,#ff9800,#ffb74d);border-radius:50%;top:50%;right:10%;transform:translateY(-50%);filter:blur(100px);}
+.floating-icon{position:absolute;z-index:2;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+.icon-1{top:15%;right:15%;}
+.icon-2{top:60%;right:8%;}
+.icon-3{bottom:15%;right:20%;}
+.icon-4{top:30%;left:10%;}
+.floating-icon i{font-size:50px;color:#ff6b6b;background:#fff;width:80px;height:80px;display:flex;align-items:center;justify-content:center;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+.hero-content{position:relative;z-index:10;max-width:650px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;padding:8px 20px;border-radius:30px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin-bottom:25px;font-size:.9rem;color:#666;}
+.hero-badge img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-8px;}
+.hero-badge img:first-child{margin-left:0;}
+.hero-title{font-size:3.5rem;font-weight:800;color:#1a1a1a;line-height:1.2;margin-bottom:20px;}
+.hero-title .highlight{position:relative;display:inline-block;}
+.hero-title .highlight::after{content:"";position:absolute;bottom:8px;left:0;right:0;height:12px;background:rgba(76,175,80,0.3);z-index:-1;border-radius:4px;}
+.hero-description{font-size:1.1rem;color:#666;line-height:1.7;margin-bottom:35px;}
+.hero-buttons{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-primary-hero{background:linear-gradient(135deg,#10b981,#059669);color:white;padding:.875rem 2rem;border:none;border-radius:8px;font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;display:inline-block;}
+.btn-primary-hero:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.25);}
+.btn-secondary-hero{padding:14px 32px;background:#fff;color:#1a1a1a;border:2px solid #1a1a1a;border-radius:30px;font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;}
+.btn-secondary-hero:hover{background:#1a1a1a;color:#fff;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:12px;}
+.stat-number{font-size:2.5rem;font-weight:800;color:#1a1a1a;}
+.stat-label{font-size:.9rem;color:#666;}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-top:30px;}
+.stars{color:#ffc107;font-size:1.2rem;}
+.rating-text{color:#666;font-size:.95rem;}
+.hero-image{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;}
+.hero-image img{max-width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.15));}
+.dots-pattern{position:absolute;width:100px;height:100px;background-image:radial-gradient(circle,#ddd 2px,transparent 2px);background-size:15px 15px;opacity:.5;}
+.dots-1{top:10%;left:5%;}
+.dots-2{bottom:10%;right:5%;}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .hero-section{min-height:auto;padding:60px 20px 40px;}
+  .hero-title{font-size:2.5rem;}
+  .hero-image{margin-top:40px;}
+  .floating-icon{display:none;}
+}
+@media(max-width:768px){
+  .hero-title{font-size:2rem;}
+  .hero-description{font-size:1rem;}
+  .hero-buttons{flex-direction:column;}
+  .btn-primary-hero,.btn-secondary-hero{width:100%;}
+  .hero-stats{gap:25px;}
+  .stat-number{font-size:2rem;}
+}
+@media(max-width:576px){
+  .hero-section{padding:10px 15px 30px;}
+  .hero-title{font-size:1.75rem;}
+  .hero-title .highlight::after{height:8px;bottom:4px;}
+  .hero-description{font-size:.95rem;margin-bottom:25px;}
+  .btn-primary-hero,.btn-secondary-hero{padding:12px 24px;font-size:.95rem;}
+  .hero-stats{gap:20px;}
+  .stat-number{font-size:1.8rem;}
+  .stat-label{font-size:.85rem;}
+  .hero-rating{margin-top:20px;}
+  .shape-1,.shape-2,.shape-3{display:none;}
+  .dots-pattern{width:60px;height:60px;background-size:10px 10px;}
+}
+
+</style>
+<style>
+    .page-header h1{font-size:1.5rem;font-weight:700;color:#1a1a1a;}
+.search-container{max-width:900px;margin:0 auto;padding:0 20px;}
+.search-box{display:flex;align-items:center;background:#fff;border-radius:32px;padding:8px 18px;box-shadow:0 3px 14px rgba(0,0,0,0.08);gap:12px;}
+.search-box i{color:#777;font-size:20px;}
+.search-box input{border:none;outline:none;flex:1;font-size:.8rem;color:#333;background:none;}
+.filter-btn{background:none;border:none;font-size:20px;color:#444;cursor:pointer;}
+.tab-container{display:flex;gap:12px;margin:20px 0 30px;flex-wrap:wrap;}
+.tab-btn{padding:10px 24px;border-radius:20px;border:none;background:#e9ecef;color:#6c757d;font-weight:500;cursor:pointer;transition:.2s;}
+.tab-btn.active{background:#1a1a1a;color:#fff;}
+
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+@media(max-width:992px){.courses-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:576px){.courses-grid{grid-template-columns:1fr;gap:0;padding:0 20px;}.tab-btn{padding:8px 13px;border-radius:20px;font-size:12px;}}
+
+.course-card{background:#fff;border-radius:22px;overflow:hidden;padding:16px;cursor:pointer;transition:.3s;box-shadow:0 10px 25px rgba(0,0,0,0.08);}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,0,0,0.15);}
+.course-img{width:100%;height:180px;border-radius:18px;overflow:hidden;}
+.course-img img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+.course-card:hover img{transform:scale(1.05);}
+.course-badge{position:absolute;margin-top:-165px;margin-left:14px;background:#fff;padding:4px 12px;border-radius:12px;font-size:.75rem;font-weight:600;color:#3b5bdb;box-shadow:0 3px 8px rgba(0,0,0,0.15);}
+.course-title{font-size:1rem;font-weight:700;margin-top:10px;color:#222;line-height:1.4;}
+.course-description{font-size:.85rem;color:#777;margin-top:4px;height:38px;overflow:hidden;}
+.course-mentor{display:flex;align-items:center;gap:12px;margin-top:16px;}
+.course-mentor img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+.course-mentor-info{display:flex;flex-direction:column;}
+.course-mentor-info span:first-child{font-weight:700;font-size:.9rem;}
+.course-mentor-info span:last-child{color:#777;font-size:.8rem;}
+
+@media(max-width:576px){
+.course-card{display:flex;align-items:center;gap:12px;padding:12px 0;border-radius:0;box-shadow:none;border-bottom:1px solid #e9ecef;background:transparent;}
+.course-card:hover{transform:none;box-shadow:none;background:#f8f9fa;}
+.course-badge,.course-mentor{display:none!important;}
+.course-icon{font-size:32px;min-width:50px;min-height:50px;border-radius:12px;background:#e8288e;text-align:center;}
+.course-content{flex:1;}
+.course-title{font-size:.95rem;font-weight:600;margin:0;color:#1a1a1a;line-height:1.3;}
+.course-description{font-size:.8rem;color:#999;margin-top:2px;height:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;}
+.course-arrow{color:gray;font-size:18px;}
+}
+
+@media(min-width:577px){.course-icon,.course-arrow{display:none;}}
+
+.hero-section{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,#f5f7fa,#e8f4f8);padding:80px 20px 60px;}
+.hero-bg-shape{position:absolute;z-index:1;opacity:.15;}
+.shape-1{width:400px;height:400px;background:linear-gradient(135deg,#4caf50,#81c784);border-radius:50%;top:-100px;right:-100px;filter:blur(80px);}
+.shape-2{width:350px;height:350px;background:linear-gradient(135deg,#2196f3,#64b5f6);border-radius:50%;bottom:-80px;left:-80px;filter:blur(80px);}
+.shape-3{width:300px;height:300px;background:linear-gradient(135deg,#ff9800,#ffb74d);border-radius:50%;top:50%;right:10%;transform:translateY(-50%);filter:blur(100px);}
+.floating-icon{position:absolute;z-index:2;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+.icon-1{top:15%;right:15%;}
+.icon-2{top:60%;right:8%;}
+.icon-3{bottom:15%;right:20%;}
+.icon-4{top:30%;left:10%;}
+.floating-icon i{font-size:50px;color:#ff6b6b;background:#fff;width:80px;height:80px;display:flex;align-items:center;justify-content:center;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+.hero-content{position:relative;z-index:10;max-width:650px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;padding:8px 20px;border-radius:30px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin-bottom:25px;font-size:.9rem;color:#666;}
+.hero-badge img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-8px;}
+.hero-badge img:first-child{margin-left:0;}
+.hero-title{font-size:3.5rem;font-weight:800;color:#1a1a1a;line-height:1.2;margin-bottom:20px;}
+.hero-title .highlight{position:relative;display:inline-block;}
+.hero-title .highlight::after{content:"";position:absolute;bottom:8px;left:0;right:0;height:12px;background:rgba(76,175,80,0.3);z-index:-1;border-radius:4px;}
+.hero-description{font-size:1.1rem;color:#666;line-height:1.7;margin-bottom:35px;}
+.hero-buttons{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-primary-hero{padding:14px 32px;background:linear-gradient(135deg,#1a1a1a,#333);color:#fff;border:none;border-radius:30px;font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+.btn-primary-hero:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.25);}
+.btn-secondary-hero{background:linear-gradient(135deg,#10b981,#059669);color:white;padding:.875rem 2rem;border:none;border-radius:999px;font-weight:600;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;display:inline-block;}
+.btn-secondary-hero:hover{background:#1a1a1a;color:#fff;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:12px;}
+.stat-number{font-size:2.5rem;font-weight:800;color:#1a1a1a;}
+.stat-label{font-size:.9rem;color:#666;}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-top:30px;}
+.stars{color:#ffc107;font-size:1.2rem;}
+.rating-text{color:#666;font-size:.95rem;}
+.hero-image{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;}
+.hero-image img{max-width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.15));}
+.dots-pattern{position:absolute;width:100px;height:100px;background-image:radial-gradient(circle,#ddd 2px,transparent 2px);background-size:15px 15px;opacity:.5;}
+.dots-1{top:10%;left:5%;}
+.dots-2{bottom:10%;right:5%;}
+
+@media(max-width:992px){
+.hero-section{min-height:auto;padding:60px 20px 40px;}
+.hero-title{font-size:2.5rem;}
+.hero-image{margin-top:40px;}
+.floating-icon{display:none;}
+}
+
+@media(max-width:768px){
+.hero-title{font-size:2rem;}
+.hero-description{font-size:1rem;}
+.hero-buttons{flex-direction:column;}
+.btn-primary-hero,.btn-secondary-hero{width:100%;}
+.hero-stats{gap:25px;}
+.stat-number{font-size:2rem;}
+}
+
+@media(max-width:576px){
+.hero-section{padding:20px 15px 30px;}
+.hero-title{font-size:1.75rem;}
+.hero-title .highlight::after{height:8px;bottom:4px;}
+.hero-description{font-size:.95rem;margin-bottom:25px;}
+.btn-primary-hero,.btn-secondary-hero{padding:12px 24px;font-size:.95rem;}
+.hero-stats{gap:20px;}
+.stat-number{font-size:1.8rem;}
+.stat-label{font-size:.85rem;}
+.hero-rating{margin-top:20px;}
+.shape-1,.shape-2,.shape-3{display:none;}
+.dots-pattern{width:60px;height:60px;background-size:10px 10px;}
+}
+
+@media(max-width:576px){.course-icon{display:none!important;}}
+@media(max-width:576px){
+.course-img{display:block!important;width:60px;height:60px;border-radius:12px;overflow:hidden;flex-shrink:0;}
+.course-img img{width:100%;height:100%;object-fit:cover;}
+}
+
+</style>
+   <style>
+    .footer{background:#f5f5f5;padding:4rem 0 2rem;}
+.footer-top{background:white;padding:3rem 0;margin-bottom:3rem;}
+.subscribe-section{max-width:600px;}
+.subscribe-title{font-size:1.75rem;font-weight:700;color:#1f2937;margin-bottom:1.5rem;line-height:1.3;}
+.subscribe-form{display:flex;gap:.5rem;}
+.subscribe-input{flex:1;padding:.875rem 1.25rem;border:1px solid #e5e7eb;border-radius:6px;font-size:.9375rem;background:#f9fafb;transition:.2s;}
+.subscribe-input:focus{outline:none;border-color:#3b82f6;background:white;box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+.subscribe-btn{padding:.875rem 2rem;background:#3b82f6;color:white;border:none;border-radius:6px;font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:.2s;white-space:nowrap;}
+.subscribe-btn:hover{background:#2563eb;transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,130,246,.3);}
+.footer-content{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand{text-align:left;}
+.brand-title{font-size:1.5rem;font-weight:700;color:#1f2937;margin-bottom:1rem;text-align:left;}
+.brand-description{font-size:.875rem;color:#6b7280;line-height:1.6;margin-bottom:1.5rem;text-align:left;}
+.social-links{display:flex;gap:.75rem;justify-content:flex-start;}
+.social-link{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s;font-size:.875rem;}
+.social-link.linkedin{background:#0077b5;color:white;}
+.social-link.facebook{background:#1877f2;color:white;}
+.social-link.twitter{background:#1da1f2;color:white;}
+.social-link.youtube{background:#ff0000;color:white;}
+.social-link:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+.footer-column{text-align:left;}
+.footer-column-title{font-size:.875rem;font-weight:700;color:#1f2937;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.25rem;text-align:left;}
+.footer-links{list-style:none;padding:0;margin:0;}
+.footer-links li{margin-bottom:.75rem;}
+.footer-link{color:#6b7280;text-decoration:none;font-size:.9375rem;transition:.2s;display:inline-block;}
+.footer-link:hover{color:#3b82f6;padding-left:4px;}
+.footer-bottom{padding-top:2rem;border-top:1px solid #e5e7eb;text-align:center;}
+.copyright{font-size:.875rem;color:#9ca3af;margin:0;}
+@media(max-width:991.98px){
+.footer-content{grid-template-columns:1fr 1fr;gap:2rem;}
+.footer-brand{grid-column:1/-1;}
+}
+@media(max-width:767.98px){
+.footer{padding:3rem 0 1.5rem;}
+.footer-top{padding:2rem 0;margin-bottom:2rem;}
+.subscribe-title{font-size:1.5rem;}
+.subscribe-form{flex-direction:column;}
+.subscribe-btn{width:100%;}
+.footer-content{grid-template-columns:1fr;gap:2rem;}
+.footer-brand{grid-column:1;}
+.brand-title,.brand-description,.footer-column-title{text-align:left;}
+.social-links{justify-content:flex-start;}
+}
+@media(max-width:575.98px){
+.subscribe-input{padding:.75rem 1rem;font-size:.875rem;}
+.subscribe-btn{padding:.75rem 1.5rem;}
+}
+
+   </style>
+</head>
+<body>
+    <!-- Desktop Navigation -->
+    <nav class="navbar d-none d-md-block">
+        <div class="container px-4">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <div class="logo-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="brand-text">THEDUNG</span>
+                </div>
+
+                <!-- Day Navigator -->
+                <div class="day-navigator">
+                    <button class="nav-arrow">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <a href="index.html" class="day-btn " onclick="selectDay(event, this)">TRANG CHỦ</a>
+                    <a href="courses.html" class="day-btn active" onclick="selectDay(event, this)">KHÓA HỌC</a>
+                    <a href="music.html" class="day-btn" onclick="selectDay(event, this)">ÂM NHẠC</a>
+                    <a href="news.html" class="day-btn" onclick="selectDay(event, this)">TIN TỨC</a>
+                    <a href="contact.html" class="day-btn" onclick="selectDay(event, this)">LIÊN HỆ</a>
+                    <button class="nav-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <a href="login.html" id="desktopAuthBtn" class="icon-btn">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="navbar d-md-none">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <div class="logo-box">
+                       <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="brand-text">THEDUNG</span>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="d-flex align-items-center gap-1">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="icon-btn" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Day Navigator -->
+    <div class="mobile-day-nav d-md-none">
+        <div class="d-flex align-items-center gap-2">
+            <button class="nav-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="d-inline-flex gap-1">
+                <a href="index.html" class="day-btn mobile-day-btn " onclick="selectDay(event, this)">Trang chủ</a>
+                <a href="courses.html" class="day-btn mobile-day-btn active" onclick="selectDay(event, this)">Khóa học</a>
+                <a href="music.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Âm nhạc</a>
+                <a href="news.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Tin tức</a>
+                <a href="contact.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Liên hệ</a>
+            </div>
+            <button class="nav-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <div class="user-profile">
+                <div class="user-avatar">TD</div>
+                <div class="user-info">
+                    <p class="user-name">THEDUNG</p>
+                    <p class="user-plan">education</p>
+                </div>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Search Box -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm...">
+            </div>
+
+            <!-- Main Menu Section -->
+            <div class="menu-section">
+                <a href="index.html" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Trang chủ</span>
+                </a>
+                <a href="notifications.html" class="menu-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Thông báo</span>
+                    <span class="menu-badge">3</span>
+                </a>
+                <a href="messages.html" class="menu-item">
+                    <i class="fas fa-comment"></i>
+                    <span>Tin nhắn</span>
+                </a>
+            </div>
+
+            <!-- Shared Section -->
+            <div class="menu-section">
+                <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                    <span class="section-title mb-0">Nội Dung</span>
+                    <i class="fas fa-plus add-btn"></i>
+                </div>
+                <a href="courses.html" class="menu-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Khóa học</span>
+                </a>
+                <a href="music.html" class="menu-item">
+                    <i class="fas fa-music"></i>
+                    <span>Âm nhạc</span>
+                </a>
+                <a href="news.html" class="menu-item">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Tin tức</span>
+                </a>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="menu-section">
+                <div class="d-flex align-items-center justify-content-between px-2 mb-2">
+                    <span class="section-title mb-0">Danh Mục</span>
+                    <i class="fas fa-plus add-btn"></i>
+                </div>
+                <a href="#" class="project-item">
+                    <span class="project-dot purple"></span>
+                    <span>Lập trình</span>
+                </a>
+                <a href="#" class="project-item">
+                    <span class="project-dot pink"></span>
+                    <span>Thiết kế</span>
+                </a>
+                <a href="#" class="project-item">
+                    <span class="project-dot orange"></span>
+                    <span>Marketing</span>
+                </a>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <!-- Bottom Menu -->
+            <div class="bottom-menu">
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Cài đặt</span>
+                </a>
+                <a href="help.html" class="menu-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Trợ giúp</span>
+                </a>
+                <a href="contact.html" class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </div>
+
+            <!-- User Footer -->
+            <a href="login.html" class="user-footer">
+                <div class="user-footer-avatar">AL</div>
+                <div class="user-footer-info">
+                    <p class="user-footer-name">Đăng nhập</p>
+                    <p class="user-footer-email">student@edufun.com</p>
+                </div>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            </a>
+        </div>
+    </div>
+
+
+<!-- Hero Section -->
+    <!-- <section class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="badge-booking">Bao gồm các khóa học có phí và miễn phí</span>
+                
+                <h1 class="hero-title">
+                    Mỗi video <span class="youtube-icon"><i class="fab fa-youtube"></i></span> là một bước tiến<br>
+                    trong hành trình học tập của bạn.
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Những khóa học được thiết kế tinh gọn, giúp bạn tiếp thu kiến thức một cách tự nhiên và hiệu quả nhất.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn-view-pricing">Bắt đầu</a>
+                    <a href="#works" class="btn-our-works">Xem thêm</a>
+                </div>
+            </div>
+
+           
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-label">Lượt xem</span>
+                    <div class="stat-value">
+                        <i class="fab fa-youtube youtube-logo"></i>
+                        <span>300M+</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Đánh giá</span>
+                    <div class="stat-value">
+                        <span class="star-rating">⭐</span>
+                        <span>5/5 Excellent</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Số lượng</span>
+                    <div class="stat-value">
+                        <i class="fab fa-facebook facebook-logo"></i>
+                        <span>2400+</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section> -->
+
+
+<section class="hero-section">
+      <!-- Background shapes -->
+      <div class="hero-bg-shape shape-1"></div>
+      <div class="hero-bg-shape shape-2"></div>
+      <div class="hero-bg-shape shape-3"></div>
+
+      <!-- Dots pattern -->
+      <div class="dots-pattern dots-1"></div>
+      <div class="dots-pattern dots-2"></div>
+
+      <!-- Floating icons -->
+      <div class="floating-icon icon-1">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="floating-icon icon-2">
+        <i class="fas fa-lightbulb"></i>
+      </div>
+      <div class="floating-icon icon-3">
+        <i class="fas fa-book-open"></i>
+      </div>
+      <div class="floating-icon icon-4">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Content -->
+          <div class="col-lg-6 col-md-12">
+            <div class="hero-content">
+              <!-- Badge -->
+              <div class="hero-badge">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Teacher"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Teacher"
+                />
+                <img
+                  src="https://randomuser.me/api/portraits/men/52.jpg"
+                  alt="Teacher"
+                />
+                <span><strong>Learn From</strong></span>
+              </div>
+
+              <!-- Title -->
+              <h1 class="hero-title">
+                Khám phá các <span class="highlight">khóa học mới</span>
+              </h1>
+
+              <!-- Description -->
+              <p class="hero-description">
+                Chọn môn học bạn muốn, bấm tham gia để thi thử trực tuyến...
+              </p>
+
+              <!-- Buttons -->
+              <div class="hero-buttons">
+                <button class="btn-primary-hero" data-aos="fade-right">
+                  Tham gia thi
+                </button>
+                <button class="btn-secondary-hero" data-aos="fade-left">
+                  Xem thêm
+                </button>
+              </div>
+
+              <!-- Stats -->
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <div>
+                    <div class="stat-number">45K+</div>
+                    <div class="stat-label">Sinh viên<br />đã tham gia</div>
+                  </div>
+                </div>
+
+                <div class="stat-item">
+                  <div>
+                    <div class="stat-number">Uy tín</div>
+                    <div class="stat-label">Hỗ trợ<br />đa nền tảng</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rating -->
+              <div class="hero-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="rating-text">15K+ đánh giá</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="col-lg-6 col-md-12">
+            <div class="hero-image" data-aos="zoom-in">
+              <img src="image/herocourse.png" alt="Teacher" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+ <!-- ================= SEARCH ================= -->
+    <div class="search-container my-2" data-aos="zoom-in">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm..." id="searchInput" />
+        <button class="filter-btn">
+          <i class="fas fa-sliders-h"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= TABS ================= -->
+    <div class="container">
+      <div class="tab-container" data-aos="fade-up" data-aos-delay="150">
+        <button class="tab-btn active" onclick="filterCourse('all')">
+          Tất cả
+        </button>
+        <button class="tab-btn" onclick="filterCourse('yearone')">Năm 1</button>
+        <button class="tab-btn" onclick="filterCourse('yeartwo')">Năm 2</button>
+        <button class="tab-btn" onclick="filterCourse('yearthree')">
+          Năm 3
+        </button>
+        <button class="tab-btn" onclick="filterCourse('yearfour')">
+          Năm 4
+        </button>
+      </div>
+
+      <!-- GRID -->
+      <div
+        class="courses-grid"
+        id="coursesGrid"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      ></div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Subscribe Section -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="subscribe-section">
+                            <h2 class="subscribe-title">Đăng ký để nhận<br>ưu đãi đặc biệt</h2>
+                            <form class="subscribe-form">
+                                <input type="email" class="subscribe-input" placeholder="Email address" required>
+                                <button type="submit" class="subscribe-btn">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Content -->
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <h3 class="brand-title">THEDUNG</h3>
+                    <p class="brand-description">
+                        là nền tảng kết hợp kiến thức và sự vui nhộn, cung cấp bài học trực quan. Người dùng có thể vừa học, vừa thư giãn qua trò chơi, giúp việc học trở nên dễ tiếp thu và thú vị hơn.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link twitter" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- On Our Site Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">On Our Site</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Trang chủ</a></li>
+                        <li><a href="#" class="footer-link">Khóa học</a></li>
+                        <li><a href="#" class="footer-link">Âm nhạc</a></li>
+                        <li><a href="#" class="footer-link">Tin tức</a></li>
+                        <li><a href="#" class="footer-link">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Khóa học</a></li>
+                        <li><a href="#" class="footer-link">Âm nhạc</a></li>
+                        <li><a href="#" class="footer-link">Phim ảnh</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:arshakir123@gmail.com" class="footer-link">luongthedung@gmail.com</a></li>
+                        <li><a href="tel:+646-987-213" class="footer-link">+0919844429</a></li>
+                        <li><a href="#" class="footer-link">Hương Khê - Hà Tĩnh</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Thedung. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function selectDay(event, element) {
+            // Prevent default only for demo purposes - remove this line in production
+            // event.preventDefault();
+            
+            // Remove active from all day buttons
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            
+            // Add active to clicked element and its counterpart
+            const linkText = element.textContent.trim();
+            document.querySelectorAll('.day-btn').forEach(b => {
+                if (b.textContent.trim() === linkText) {
+                    b.classList.add('active');
+                }
+            });
+        }
+    </script>
+     <script>
+      const courses = [
+        {
+          id: 1,
+          title: "NHẬP MÔN LẬP TRÌNH",
+          subtitle: "Môn học nhập môn lập trình",
+          description:
+            "môn học giới thiệu tư duy lập trình, biến, kiểu dữ liệu, cấu trúc điều khiển và cách viết chương trình đơn giản.",
+          category: "yearone",
+          lessonKey: "nmlt",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/1200x/ba/82/56/ba8256720a7edeb9d45301d9b81f716a.jpg",
+        },
+        {
+          id: 2,
+          title: "TIN HỌC CƠ BẢN",
+          subtitle: "Môn học tin học cơ bản",
+          description:
+            "môn học giới thiệu kiến thức nhập môn tin học, sử dụng máy tính, soạn thảo văn bản và thao tác phần mềm văn phòng..",
+          category: "yearone",
+          lessonKey: "thcb",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/736x/89/46/78/894678914d30e22d0c96c78f2adc7f98.jpg",
+        },
+        {
+          id: 3,
+          title: "KIẾN TRÚC MÁY TÍNH VÀ NGUYÊN LÝ HỆ ĐIỀU HÀNH",
+          subtitle: "Môn học",
+          description:
+            "môn học tìm hiểu cấu trúc phần cứng máy tính, cơ chế hoạt động và nguyên lý của hệ điều hành.",
+          category: "yeartwo",
+          lessonKey: "ktmtvnlhdh",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/736x/4a/a3/4a/4aa34aeb6918b19c58dd00622028b11c.jpg",
+        },
+        {
+          id: 4,
+          title: "KINH TẾ SỐ",
+          subtitle: "Môn học",
+          description:
+            "môn học giới thiệu các mô hình kinh doanh số, chuyển đổi số và ứng dụng công nghệ trong kinh tế.",
+          category: "yeartwo",
+          lessonKey: "kts",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/736x/ce/78/97/ce78973fab30262ef8c0d47a17c7a8ae.jpg",
+        },
+        {
+          id: 5,
+          title: "TRIẾT HỌC MÁC – LÊNIN",
+          subtitle: "Môn học",
+          description:
+            "môn học tìm hiểu hệ thống quan điểm triết học mác – lênin và thế giới quan khoa học.",
+          category: "yeartwo",
+          lessonKey: "thmln",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/736x/0f/40/e4/0f40e4d98e1336585322735906f7afdc.jpg",
+        },
+        
+
+        {
+          id: 6,
+          title: "CHỦ NGHĨA XÃ HỘI KHOA HỌC",
+          subtitle: "Môn học chủ nghĩa xã hội",
+          description: "môn học trình bày cơ sở lý luận về con đường phát triển xã hội theo chủ nghĩa xã hội, vai trò của giai cấp công nhân và những quy luật hình thành, phát triển của xã hội mới.",
+          category: "yearthree",
+          lessonKey: "cnxh",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/736x/ec/1b/51/ec1b51846c1413f6561d297351bf4010.jpg",
+        },
+        {
+          id: 7,
+          title: "CÔNG NGHỆ WEB",
+          subtitle: "Master the Fundamentals",
+          description: "Tìm hiểu sâu hơn về .NET, Python-Django...",
+          category: "yearthree",
+          lessonKey: "web_basic",
+          price: "$156",
+          icon: "💻",
+          image:
+            "https://i.pinimg.com/736x/86/a0/6f/86a06f1e521a384bf06783f628492731.jpg",
+        },
+        {
+          id: 8,
+          title: "CÔNG NGHỆ PHẦN MỀM",
+          subtitle: "Công nghệ phần mềm",
+          description: "Làm quen với framework như Laravel,ReactJS,NextJS...",
+          category: "yearthree",
+          lessonKey: "cnpm",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/736x/ff/6e/7a/ff6e7a2f3d3524bd8e62a7f910a21cb2.jpg",
+        },
+        {
+          id: 9,
+          title: "TRÍ TUỆ NHÂN TẠO",
+          subtitle: "Trí tuệ nhân tạo",
+          description: "môn học giới thiệu các khái niệm, kỹ thuật và ứng dụng của trí tuệ nhân tạo trong giải quyết bài toán thực tế.",
+          category: "yearthree",
+          lessonKey: "ttnt",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/1200x/6f/c5/dc/6fc5dcd8682665330393924e30e5d7d9.jpg",
+        },
+        {
+          id: 10,
+          title: "TƯ TƯỞNG HỒ CHÍ MINH",
+          subtitle: "Tư tưởng Hồ Chí Minh",
+          description: "môn học trình bày nội dung cốt lõi trong tư tưởng, đạo đức và phong cách hồ chí minh.",
+          category: "yearthree",
+          lessonKey: "tthcm",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/736x/ce/c4/64/cec464266ba87495afc51ed720933adf.jpg",
+        },
+        {
+          id: 11,
+          title: "TỰ ĐỘNG HÓA QUY TRÌNH",
+          subtitle: "Tự động hóa quy trình",
+          description: "môn học cung cấp kiến thức về cách tự động hóa các quy trình nghiệp vụ nhằm tối ưu hiệu quả công việc.",
+          category: "yearthree",
+          lessonKey: "tdhqt",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/1200x/86/11/88/861188dc7e9e07e945fd92a3dbad2734.jpg",
+        },
+        {
+          id: 12,
+          title: "LẬP TRÌNH TRONG WINDOWS",
+          subtitle: "Lập trình trong windows",
+          description: "môn học hướng dẫn sinh viên lập trình ứng dụng chạy trên hệ điều hành windows.",
+          category: "yearthree",
+          lessonKey: "lttwd",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/736x/73/6d/73/736d73784671b023cb5876f274befacb.jpg",
+        },
+        {
+          id: 13,
+          title: "LINUX VÀ PHẦN MỀM NGUỒN MỞ",
+          subtitle: "Linux và phần mềm nguồn mở",
+          description: "môn học cung cấp kiến thức về hệ điều hành linux và cách sử dụng phần mềm nguồn mở trong công việc.",
+          category: "yearthree",
+          lessonKey: "lnvpmnm",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/1200x/34/b1/e7/34b1e7db8bffdcc0cf7424f654b97fd0.jpg",
+        },
+        {
+          id: 14,
+          title: "CƠ SỞ DỮ LIỆU",
+          subtitle: "Cơ sở dữ liệu",
+          description: "môn học cung cấp kiến thức nền tảng về mô hình dữ liệu, sql và cách thiết kế cơ sở dữ liệu.",
+          category: "yeartwo",
+          lessonKey: "csdl",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/1200x/f6/88/ab/f688ab058ef35e654bc902871c067e7b.jpg",
+        },
+        {
+          id: 15,
+          title: "LẬP TRÌNH WEB",
+          subtitle: "Lập trình web",
+          description: "môn học cung cấp kiến thức và kỹ năng xây dựng các ứng dụng web, bao gồm cách tạo giao diện, xử lý dữ liệu phía máy chủ và kết nối cơ sở dữ liệu.",
+          category: "yeartwo",
+          lessonKey: "ltw",
+          price: "$199",
+          icon: "⚡",
+          image:
+            "https://i.pinimg.com/1200x/8d/ee/fd/8deefd3e36080085fce3ca3f90e78c28.jpg",
+        },
+        
+      ];
+
+      function renderCourses(filter = "all") {
+        const grid = document.getElementById("coursesGrid");
+        const data =
+          filter === "all"
+            ? courses
+            : courses.filter((c) => c.category === filter);
+
+        grid.innerHTML = data
+          .map(
+            (c) => `
+  <div class="course-card" data-aos="zoom-in" onclick="goToCourse('${
+    c.lessonKey
+  }')">
+    
+    <!-- Icon (chỉ hiện mobile) -->
+    <div class="course-icon">${c.icon}</div>
+
+    <!-- Ảnh (ẩn trên mobile) -->
+    <div class="course-img">
+      <img src="${c.image}">
+    </div>
+
+    <!-- Badge (ẩn trên mobile) -->
+    <div class="course-badge">${c.category.toUpperCase()}</div>
+
+    <!-- Content -->
+    <div class="course-content">
+      <div class="course-title">${c.title}</div>
+      <div class="course-description">${c.description}</div>
+    </div>
+
+    <!-- Arrow (chỉ hiện mobile) -->
+    <div class="course-arrow">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <!-- Mentor (ẩn trên mobile) -->
+    <div class="course-mentor">
+      <img src="https://i.pinimg.com/1200x/74/42/8d/74428d7c7e36e1a8b3c82d0e6069a9c5.jpg">
+      <div class="course-mentor-info">
+        <span>Lương Thế Dũng</span>
+        <span>Admin</span>
+      </div>
+    </div>
+
+  </div>
+`
+          )
+          .join("");
+      }
+
+      function filterCourse(category) {
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+        renderCourses(category);
+      }
+
+      function goToCourse(key) {
+        window.location.href = "lessons.html?subject=" + key;
+      }
+
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        const search = e.target.value.toLowerCase();
+        const result = courses.filter(
+          (c) =>
+            c.title.toLowerCase().includes(search) ||
+            c.subtitle.toLowerCase().includes(search) ||
+            c.description.toLowerCase().includes(search)
+        );
+
+        const grid = document.getElementById("coursesGrid");
+        grid.innerHTML = result
+          .map(
+            (c) => `
+    <div class="course-card" data-aos="fade-up" onclick="goToCourse('${
+      c.lessonKey
+    }')">
+      <div class="course-icon">${c.icon}</div>
+      <div class="course-img">
+        <img src="${c.image}">
+      </div>
+      <div class="course-badge">${c.category.toUpperCase()}</div>
+      <div class="course-content">
+        <div class="course-title">${c.title}</div>
+        <div class="course-description">${c.description}</div>
+      </div>
+      <div class="course-arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="course-mentor">
+        <img src="https://randomuser.me/api/portraits/men/${c.id + 20}.jpg">
+        <div class="course-mentor-info">
+          <span>Lương Thế Dũng #${c.id}</span>
+          <span>Instructor</span>
+        </div>
+      </div>
+    </div>
+  `
+          )
+          .join("");
+      });
+
+      renderCourses();
+    </script>
+        <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 900,
+        once: false,
+        mirror: true,
+        easing: "ease-out-cubic",
+      });
+    </script>
+</body>
+</html>
