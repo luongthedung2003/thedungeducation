@@ -1219,7 +1219,7 @@
         } catch {
           document.getElementById("quizArea").innerHTML = `
       <div style=" border-radius:16px; text-align:center;">
-         <img src="https://i.pinimg.com/originals/00/f0/80/00f080497faeb0674f8f66eaf62312ad.gif" style="max-width:400px; opacity:0.9;">
+         <img src="https://i.pinimg.com/originals/84/b7/e1/84b7e12a32dcd7c7e842bb214e70e11c.gif" style="max-width:400px; opacity:0.9;">
         <p style="color:#ef4444; font-size:16px; font-weight:bold">Chưa có đề, vui lòng chờ Admin cập nhật</p>
       </div>
     `;
@@ -1376,6 +1376,27 @@
     });
   });
 </script>
+<script>
+// ========================
+// AUTO SHOW USER INFO ON ALL PAGES
+// ========================
+document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // Nếu đã đăng nhập → hiển thị tên
+    if (isLoggedIn === "true" && user) {
+        const nameBox = document.querySelector(".user-footer-name");
+        const emailBox = document.querySelector(".user-footer-email");
+        const avatarBox = document.querySelector(".user-footer-avatar");
+
+        if (nameBox) nameBox.textContent = user.name;
+        if (emailBox) emailBox.textContent = user.email;
+        if (avatarBox) avatarBox.textContent = user.name.substring(0,2).toUpperCase();
+    }
+});
+</script>
+
 
 </body>
 </html>

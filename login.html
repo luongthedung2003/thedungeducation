@@ -440,10 +440,7 @@
 
         /* Mobile Responsive */
         @media (max-width: 767.98px) {
-            body {
-                padding: 1rem;
-                background: white;
-            }
+            
 
             .auth-container {
                 box-shadow: none;
@@ -471,7 +468,7 @@
 
         @media (max-width: 575.98px) {
             .auth-right {
-                padding: 1.5rem 1rem;
+                padding: 0rem 1rem;
             }
 
             .social-btn {
@@ -479,6 +476,65 @@
                 height: 44px;
             }
         }
+
+        /* =========================================
+   MOBILE: Thu nhỏ mạnh thẻ input Login/Signup
+========================================= */
+@media (max-width: 576px) {
+
+    /* Input nhỏ hơn nhiều */
+    .auth-right .form-control {
+        padding: 0rem 0.65rem !important;   /* giảm padding */
+        font-size: 0.75rem !important;         /* chữ nhỏ */
+        border-radius: 6px !important;         /* bo góc nhỏ lại */
+    }
+
+    /* Label nhỏ lại */
+    .auth-right .form-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* Password eye icon nhỏ */
+    .auth-right .toggle-password i {
+        font-size: 0.9rem !important;
+    }
+
+    /* Wrapper của password nhỏ lại (icon sát hơn) */
+    .auth-right .password-wrapper .form-control {
+        padding-right: 2rem !important;
+    }
+
+    /* Button thu nhỏ */
+    .auth-right .btn-submit {
+        padding: 0.65rem !important;
+        font-size: 0.85rem !important;
+        border-radius: 8px !important;
+    }
+
+    /* Checkbox text */
+    .auth-right .checkbox-label {
+        font-size: 0.7rem !important;
+    }
+
+    /* Social login nhỏ lại */
+    .auth-right .social-btn {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .auth-right .social-btn i {
+        font-size: 1rem !important;
+    }
+
+    /* Switch text nhỏ */
+    .auth-right .switch-text {
+        font-size: 0.75rem !important;
+    }
+
+    .auth-right .divider {
+        font-size: 0.7rem !important;
+    }
+}
+
    </style>
     <style>
     .scroll-nav-btn-glass {
@@ -548,7 +604,7 @@
                     <button class="nav-arrow">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <a href="index.html" class="day-btn active" onclick="selectDay(event, this)">TRANG CHỦ</a>
+                    <a href="index.html" class="day-btn " onclick="selectDay(event, this)">TRANG CHỦ</a>
                     <a href="courses.html" class="day-btn" onclick="selectDay(event, this)">KHÓA HỌC</a>
                     <a href="music.html" class="day-btn" onclick="selectDay(event, this)">ÂM NHẠC</a>
                     <a href="news.html" class="day-btn" onclick="selectDay(event, this)">TIN TỨC</a>
@@ -611,7 +667,7 @@
                 <i class="fas fa-chevron-left"></i>
             </button>
             <div class="d-inline-flex gap-1">
-                <a href="index.html" class="day-btn mobile-day-btn active" onclick="selectDay(event, this)">Trang chủ</a>
+                <a href="index.html" class="day-btn mobile-day-btn " onclick="selectDay(event, this)">Trang chủ</a>
                 <a href="courses.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Khóa học</a>
                 <a href="music.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Âm nhạc</a>
                 <a href="news.html" class="day-btn mobile-day-btn" onclick="selectDay(event, this)">Tin tức</a>
@@ -719,7 +775,7 @@
 
             <!-- User Footer -->
             <a href="login.html" class="user-footer">
-                <div class="user-footer-avatar">AL</div>
+                <div class="user-footer-avatar">TD</div>
                 <div class="user-footer-info">
                     <p class="user-footer-name">Đăng nhập</p>
                     <p class="user-footer-email">student@edufun.com</p>
@@ -890,6 +946,56 @@
 
 
 
+<!-- SUCCESS MODAL -->
+<div id="successModal" style="
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;">
+    
+    <div style="
+        background: white;
+        width: 320px;
+        padding: 28px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,.25);">
+        
+        <div style="
+            width:90px;
+            height:90px;
+            background:#eaffef;
+            margin:auto;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;">
+            <i class="fa-solid fa-check" style="font-size:38px;color:#22c55e;"></i>
+        </div>
+
+        <h3 style="margin-top:18px;font-size:22px;font-weight:700;">Thành công!</h3>
+        <p style="color:#6b7280;font-size:14px;margin-top:6px;">
+            Bạn đã đăng ký thành công.
+        </p>
+
+        <button id="modalContinue" style="
+            margin-top:20px;
+            width:100%;
+            padding:12px;
+            background:#22c55e;
+            border:none;
+            color:white;
+            border-radius:8px;
+            font-size:15px;
+            font-weight:600;
+            cursor:pointer;">
+            TIẾP TỤC
+        </button>
+    </div>
+</div>
 
 
 
@@ -1065,5 +1171,92 @@
     });
   });
 </script>
+<script>
+// =======================
+// ĐĂNG KÝ
+// =======================
+document.addEventListener("DOMContentLoaded", () => {
+
+    const signupForm = document.querySelector("#signupForm form");
+    const loginForm = document.querySelector("#loginForm form");
+    const modal = document.getElementById("successModal");
+    const modalContinue = document.getElementById("modalContinue");
+
+    // ---- HANDLE SIGNUP ----
+    if (signupForm) {
+        signupForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const name = signupForm.querySelector("input[type='text']").value.trim();
+            const email = signupForm.querySelector("input[type='email']").value.trim();
+            const password = signupForm.querySelector("input[type='password']").value.trim();
+
+            if (!name || !email || !password) {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            // Lưu vào localStorage
+            localStorage.setItem("user", JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            }));
+
+            // Hiện modal
+            modal.style.display = "flex";
+
+            // Bấm tiếp tục → chuyển login
+            modalContinue.onclick = () => {
+                window.location.href = "login.html";
+            };
+        });
+    }
+
+    // ---- HANDLE LOGIN ----
+    if (loginForm) {
+        loginForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = loginForm.querySelector("input[type='email']").value.trim();
+            const password = loginForm.querySelector("input[type='password']").value.trim();
+
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if (!user) {
+                alert("Chưa có tài khoản, vui lòng đăng ký!");
+                return;
+            }
+
+            if (email === user.email && password === user.password) {
+                // Lưu trạng thái đăng nhập
+                localStorage.setItem("isLoggedIn", "true");
+
+                // Chuyển trang chủ
+                window.location.href = "index.html";
+            } else {
+                alert("Sai email hoặc mật khẩu!");
+            }
+        });
+    }
+
+    // ========================
+    // HIỂN THỊ USER SAU KHI LOGIN
+    // ========================
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (isLoggedIn === "true" && user) {
+        const nameBox = document.querySelector(".user-footer-name");
+        const emailBox = document.querySelector(".user-footer-email");
+        const avatarBox = document.querySelector(".user-footer-avatar");
+
+        if (nameBox) nameBox.textContent = user.name;
+        if (emailBox) emailBox.textContent = user.email;
+        if (avatarBox) avatarBox.textContent = user.name.substring(0, 2).toUpperCase();
+    }
+});
+</script>
+
 </body>
 </html>

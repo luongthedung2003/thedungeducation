@@ -837,5 +837,26 @@
     });
   });
 </script>
+<script>
+// ========================
+// AUTO SHOW USER INFO ON ALL PAGES
+// ========================
+document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // Nếu đã đăng nhập → hiển thị tên
+    if (isLoggedIn === "true" && user) {
+        const nameBox = document.querySelector(".user-footer-name");
+        const emailBox = document.querySelector(".user-footer-email");
+        const avatarBox = document.querySelector(".user-footer-avatar");
+
+        if (nameBox) nameBox.textContent = user.name;
+        if (emailBox) emailBox.textContent = user.email;
+        if (avatarBox) avatarBox.textContent = user.name.substring(0,2).toUpperCase();
+    }
+});
+</script>
+
 </body>
 </html>
