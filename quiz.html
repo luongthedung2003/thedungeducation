@@ -683,6 +683,55 @@
 }
 
    </style>
+   <style>
+    .scroll-nav-btn-glass {
+  position: fixed;
+  bottom: 26px;
+  right: 22px;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  
+  /* Glassmorphism */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999999;
+}
+
+/* Hiện khi cuộn xuống */
+.scroll-nav-btn-glass.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Icon hover đẹp */
+.scroll-nav-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.32);
+  transform: scale(1.09);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+}
+
+/* Icon màu neon nhẹ */
+.scroll-nav-btn-glass i {
+  color: #6ee7ff;
+  text-shadow: 0 0 12px rgba(110, 231, 255, 0.7);
+}
+
+   </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -954,6 +1003,40 @@
 
 
 
+
+
+
+    <!-- MISSING ANSWER MODAL -->
+<div class="result-modal" id="warningModal">
+  <div class="result-box" style="padding: 30px 25px;">
+    
+    <div style="
+        width:80px;
+        height:80px;
+        border-radius:50%;
+        border:3px solid #67c18f;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:0 auto 15px;
+        color:#67c18f;
+        font-size:40px;">
+      ✖
+    </div>
+
+    <h3 style="font-weight:700; margin-bottom:10px;">Vui lòng hoàn thành!</h3>
+
+    <p id="warningText" style="color:#666; font-size:15px; margin-bottom:25px;">
+      Bạn còn thiếu câu: ...
+    </p>
+
+    <button class="result-btn" onclick="closeWarningModal()">
+      OK, ĐÃ HIỂU
+    </button>
+
+  </div>
+</div>
+
     <!-- Footer -->
     <footer class="footer">
         <!-- Subscribe Section -->
@@ -1037,6 +1120,12 @@
             </div>
         </div>
     </footer>
+
+  <div id="scrollNavBtn" class="scroll-nav-btn-glass">
+  <i class="fa-solid fa-angles-up"></i>
+</div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
  
@@ -1129,10 +1218,14 @@
           });
         } catch {
           document.getElementById("quizArea").innerHTML = `
-      <div style="background:white; padding:30px; border-radius:16px; text-align:center;">
+      <div style=" border-radius:16px; text-align:center;">
+         <img src="https://i.pinimg.com/originals/00/f0/80/00f080497faeb0674f8f66eaf62312ad.gif" style="max-width:400px; opacity:0.9;">
         <p style="color:#ef4444; font-size:16px; font-weight:bold">Chưa có đề, vui lòng chờ Admin cập nhật</p>
       </div>
     `;
+      document.querySelector(".submit-container").style.display = "none";
+       const musicCard = document.querySelector(".music-card");
+  if (musicCard) musicCard.style.display = "none";
         }
       }
 
@@ -1153,35 +1246,74 @@
       }
 
       // Submit Quiz
-      function submitQuiz() {
-        let score = 0;
+    //   function submitQuiz() {
+    //     let score = 0;
+    //     questions.forEach((q, i) => {
+    //       let chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    //       let items = document.querySelectorAll(`input[name="q${i}"]`);
+    //       document.getElementById(`box${i}`).classList.add("expanded");
+    //       items.forEach((radio) => {
+    //         let box = radio.parentElement;
+    //         box.classList.remove("correct", "wrong", "selected");
+    //         if (radio.value === q.correct) {
+    //           box.classList.add("correct");
+    //         }
+    //         if (chosen && radio === chosen && chosen.value !== q.correct) {
+    //           box.classList.add("wrong");
+    //         }
+    //       });
+    //       if (chosen && chosen.value === q.correct) score++;
+    //     });
+    //     showResultModal(score, questions.length);
+    // }
 
-        questions.forEach((q, i) => {
-          let chosen = document.querySelector(`input[name="q${i}"]:checked`);
-          let items = document.querySelectorAll(`input[name="q${i}"]`);
+    function submitQuiz() {
+  let missing = [];
 
-          // Expand all boxes to show results
-          document.getElementById(`box${i}`).classList.add("expanded");
+  // kiểm tra câu nào chưa chọn
+  questions.forEach((q, i) => {
+    let chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    if (!chosen) {
+      missing.push(i + 1);
+    }
+  });
 
-          items.forEach((radio) => {
-            let box = radio.parentElement;
-            box.classList.remove("correct", "wrong", "selected");
+  // nếu thiếu → mở modal cảnh báo
+  if (missing.length > 0) {
+    document.getElementById("warningText").innerHTML =
+      "Vui lòng chọn đáp án cho các câu: <b>" + missing.join(", ") + "</b>";
 
-            if (radio.value === q.correct) {
-              box.classList.add("correct");
-            }
+    document.getElementById("warningModal").classList.add("show");
+    return; // không chấm bài
+  }
 
-            if (chosen && radio === chosen && chosen.value !== q.correct) {
-              box.classList.add("wrong");
-            }
-          });
+  // ------ nếu đủ câu trả lời thì chấm bài như bình thường ------
+  let score = 0;
 
-          if (chosen && chosen.value === q.correct) score++;
-        });
+  questions.forEach((q, i) => {
+    let chosen = document.querySelector(`input[name="q${i}"]:checked`);
+    let items = document.querySelectorAll(`input[name="q${i}"]`);
 
-        // Show result modal
-        showResultModal(score, questions.length);
+    document.getElementById(`box${i}`).classList.add("expanded");
+
+    items.forEach((radio) => {
+      let box = radio.parentElement;
+      box.classList.remove("correct", "wrong", "selected");
+
+      if (radio.value === q.correct) {
+        box.classList.add("correct");
       }
+
+      if (radio === chosen && chosen.value !== q.correct) {
+        box.classList.add("wrong");
+      }
+    });
+
+    if (chosen && chosen.value === q.correct) score++;
+  });
+
+  showResultModal(score, questions.length);
+}
 
       function showResultModal(score, total) {
         const modal = document.getElementById("resultModal");
@@ -1220,5 +1352,30 @@
         }
       });
     </script>
+    <script>
+      function closeWarningModal() {
+  document.getElementById("warningModal").classList.remove("show");
+}
+
+    </script>
+    <script>
+  const scrollBtn = document.getElementById("scrollNavBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollBtn.classList.add("show");
+    } else {
+      scrollBtn.classList.remove("show");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
 </body>
 </html>

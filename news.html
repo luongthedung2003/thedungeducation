@@ -534,6 +534,55 @@
             }
         }
    </style>
+    <style>
+    .scroll-nav-btn-glass {
+  position: fixed;
+  bottom: 26px;
+  right: 22px;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  
+  /* Glassmorphism */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999999;
+}
+
+/* Hiện khi cuộn xuống */
+.scroll-nav-btn-glass.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Icon hover đẹp */
+.scroll-nav-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.32);
+  transform: scale(1.09);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+}
+
+/* Icon màu neon nhẹ */
+.scroll-nav-btn-glass i {
+  color: #6ee7ff;
+  text-shadow: 0 0 12px rgba(110, 231, 255, 0.7);
+}
+
+   </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -742,234 +791,239 @@
 
 
 
- <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <img src="https://i.pinimg.com/736x/0b/6c/b1/0b6cb1a71ca09f9eeff65bac7f4dda16.jpg" alt="Học sinh đại học">
-            <div class="hero-content">
-                <span class="hero-category">🎓 GIÁO DỤC ĐẠI HỌC</span>
-                <h1 class="hero-title">10 trường đại học hàng đầu Việt Nam năm 2024</h1>
-                <p class="hero-excerpt">Khám phá danh sách các trường đại học xuất sắc nhất với chất lượng đào tạo được công nhận quốc tế và tỷ lệ sinh viên có việc làm cao nhất...</p>
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="https://media.dau.edu.vn/Media/2_SVDAU/Images/25487511-1394475254013651-7651781104893308766-o.jpg" alt="Đại học Kiến trúc Đà Nẵng – khuôn viên">
+        <div class="hero-content">
+            <span class="hero-category">🎓 TRƯỜNG ĐẠI HỌC</span>
+            <h1 class="hero-title">Đại học Kiến trúc Đà Nẵng – Hành trình đổi mới & hội nhập</h1>
+            <p class="hero-excerpt">
+                Trải qua hơn 15 năm phát triển, DAU không chỉ đào tạo kiến trúc sư, kỹ sư xây dựng mà còn là địa chỉ đào tạo đa ngành ở miền Trung, hướng tới ứng dụng trí tuệ nhân tạo, chuyển đổi số và phát triển bền vững. :contentReference[oaicite:1]{index=1}
+            </p>
+        </div>
+    </div>
+
+    <!-- Latest News -->
+    <section>
+        <div class="section-header">
+            <h2>Tin Mới Nhất</h2>
+            <a href="#" class="see-all">Xem tất cả →</a>
+        </div>
+        <div class="latest-news-grid">
+
+            <div class="news-card">
+                <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2025/8/22/1561789/Kientruc.jpg" class="news-card-image" alt="Tượng DAU">
+                <div class="news-card-content">
+                    <div class="news-card-meta">
+                        <span>🏛️ TRƯỜNG</span>
+                        <span>• 9 giờ trước</span>
+                    </div>
+                    <h3 class="news-card-title">DAU công bố điểm chuẩn năm 2025 dao động 16-20 điểm</h3>
+                    <p class="news-card-excerpt">
+                        Trường Đại học Kiến trúc Đà Nẵng vừa công bố điểm trúng tuyển năm 2025: mức thấp nhất từ 16 điểm, ngành Thiết kế đồ họa dẫn đầu với ~20 điểm. :contentReference[oaicite:2]{index=2}
+                    </p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://cdnmedia.baotintuc.vn/Upload/pTMF1jgWpbjY1m8G1xWUsg/files/2024/07/comtrao/%E1%BA%A2nh%201%20-%20%E1%BA%A2nh%20thumb.png" class="news-card-image" alt="Hợp tác UEH – DAU">
+                <div class="news-card-content">
+                    <div class="news-card-meta">
+                        <span>🤝 HỢP TÁC</span>
+                        <span>• 1 ngày trước</span>
+                    </div>
+                    <h3 class="news-card-title">DAU và Đại học Kinh tế TP.HCM trao đổi hợp tác đào tạo và chuyển đổi số</h3>
+                    <p class="news-card-excerpt">
+                        Ngày 08/7/2025, DAU đến thăm và làm việc cùng UEH nhằm học tập mô hình quản trị đào tạo hiện đại và phát triển nguồn lực. :contentReference[oaicite:4]{index=4}
+                    </p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://media.dau.edu.vn/Media/2_SVDAU/FolderFunc/202108/Images/img-2009jpg-20210829043636-e.jpg" class="news-card-image" alt="Fashion Show DAU APEC">
+                <div class="news-card-content">
+                    <div class="news-card-meta">
+                        <span>🎨 VĂN HÓA</span>
+                        <span>• 2 ngày trước</span>
+                    </div>
+                    <h3 class="news-card-title">Fashion Show tại Công viên APEC – DAU kết nối cộng đồng & nghệ thuật</h3>
+                    <p class="news-card-excerpt">
+                        Chiều 2/1/2025, chương trình giao lưu thời trang trong khuôn khổ hợp tác quốc tế giữa DAU và PolyU Hong Kong đã diễn ra thành công tại Đà Nẵng. :contentReference[oaicite:5]{index=5}
+                    </p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://media.dau.edu.vn/Media/2_SVDAU/FolderFunc/202108/Images/a8bc8db0-0a52-4bff-9522-e3cf247e3168-20210829043410-e.jpg" class="news-card-image" alt="Sinh viên DAU đoạt giải Kiến trúc Xanh">
+                <div class="news-card-content">
+                    <div class="news-card-meta">
+                        <span>🏆 SÁNG TẠO</span>
+                        <span>• 3 ngày trước</span>
+                    </div>
+                    <h3 class="news-card-title">Gần 100 đồ án tham gia “Kiến trúc Xanh sinh viên 2025” tại DAU</h3>
+                    <p class="news-card-excerpt">
+                        Nhiều sinh viên DAU tham gia và đoạt giải trong cuộc thi đồ án Kiến trúc Xanh toàn quốc, khẳng định năng lực và tinh thần sáng tạo. :contentReference[oaicite:6]{index=6}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bulletin Story -->
+    <section class="bulletin-story">
+        <div class="section-header">
+            <h2>Chuyên Gia & Giảng Viên</h2>
+            <a href="#" class="see-all">Xem tất cả →</a>
+        </div>
+        <div class="bulletin-grid">
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=12" class="bulletin-avatar" alt="GS. Nguyễn Văn A">
+                <div class="bulletin-name">GS. Nguyễn Văn A</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=20" class="bulletin-avatar" alt="PGS. Trần Thị B">
+                <div class="bulletin-name">PGS. Trần Thị B</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=33" class="bulletin-avatar" alt="TS. Lê Văn C">
+                <div class="bulletin-name">TS. Lê Văn C</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=47" class="bulletin-avatar" alt="ThS. Phạm Thị D">
+                <div class="bulletin-name">ThS. Phạm Thị D</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=52" class="bulletin-avatar" alt="GV. Hoàng Văn E">
+                <div class="bulletin-name">GV. Hoàng Văn E</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=65" class="bulletin-avatar" alt="TS. Vũ Thị F">
+                <div class="bulletin-name">TS. Vũ Thị F</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=68" class="bulletin-avatar" alt="PGS. Đỗ Văn G">
+                <div class="bulletin-name">PGS. Đỗ Văn G</div>
+            </div>
+            <div class="bulletin-item">
+                <img src="https://i.pravatar.cc/150?img=27" class="bulletin-avatar" alt="GS. Bùi Thị H">
+                <div class="bulletin-name">GS. Bùi Thị H</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Must Read -->
+    <section>
+        <div class="section-header">
+            <h2>Đọc Nhiều Nhất</h2>
+            <a href="#" class="see-all">Xem tất cả →</a>
+        </div>
+        <div class="must-read-grid">
+            <div class="must-read-large">
+                <div class="must-read-card">
+                    <img src="https://cdn2.tuoitre.vn/zoom/515_322/471584752817336320/data/teen360/news/2022/01/21/65871/1642777505_80873075_3372406009498562_537524258130100224_n.jpg" alt="Hành trình lập trình tại DAU">
+                    <div class="must-read-overlay">
+                        <div class="must-read-category">💻 CÔNG NGHỆ • 10 PHÚT ĐỌC</div>
+                        <h3 class="must-read-title">Hành trình lập trình viên từ con số 0 với sinh viên DAU</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="must-read-large featured">
+                <div class="must-read-card featured">
+                    <img src="https://i.pinimg.com/1200x/df/ee/6f/dfee6f3ef21b14a5f0354a8bb1a167f9.jpg" alt="Học nhóm tại DAU">
+                    <div class="must-read-overlay">
+                        <div class="must-read-category">📚 KỸ NĂNG • 8 PHÚT ĐỌC</div>
+                        <h3 class="must-read-title">Phương pháp học nhóm hiệu quả cho sinh viên Đại học Kiến trúc Đà Nẵng</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="must-read-large">
+                <div class="must-read-card">
+                    <img src="https://cdn.tienphong.vn/images/a6bf4f60924201126af6849ca45a3980e516a95895736481829fa6180e77a3126139d7f92173347230a71e9e483665b203df0afc7ba822f63ede27d7306a21196aefa8a6ed20f340714675ccdc2a302b/anh-1-va-thumbnails-6972-7618.jpg" alt="Ôn thi THPT tại DAU">
+                    <div class="must-read-overlay">
+                        <div class="must-read-category">✏️ THPT • 6 PHÚT ĐỌC</div>
+                        <h3 class="must-read-title">Bí quyết ôn thi THPT Quốc gia đạt điểm cao – từ góc nhìn DAU</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="must-read-large">
+                <div class="must-read-card">
+                    <img src="https://i.pinimg.com/736x/12/c6/3c/12c63c8ed352f7f61fd45ffcaa970280.jpg" alt="Học bổng DAU">
+                    <div class="must-read-overlay">
+                        <div class="must-read-category">💰 HỌC BỔNG • 7 PHÚT ĐỌC</div>
+                        <h3 class="must-read-title">Danh sách học bổng toàn phần 2024-2025 tại DAU</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editor's Pick -->
+    <section class="editors-pick">
+        <div class="section-header">
+            <h2>Lựa Chọn Của Biên Tập Viên</h2>
+            <a href="#" class="see-all">Xem tất cả →</a>
+        </div>
+
+        <div class="editors-pick-featured">
+            <img src="https://media.dau.edu.vn/Media/2_SVDAU/Images/25487511-1394475254013651-7651781104893308766-o.jpg" alt="AI trong giáo dục tại DAU">
+            <div class="editors-pick-content">
+                <span class="hero-category">🚀 CÔNG NGHỆ GIÁO DỤC</span>
+                <h2 class="editors-pick-title">AI trong giáo dục: Tương lai đã đến với ĐH Kiến trúc Đà Nẵng</h2>
+                <p class="editors-pick-excerpt">
+                    Trường đang đẩy mạnh đào tạo chuyển đổi số, tích hợp công nghệ và trí tuệ nhân tạo vào chương trình đào tạo để bắt kịp xu hướng quốc tế. :contentReference[oaicite:7]{index=7}
+                </p>
             </div>
         </div>
 
-        <!-- Latest News -->
-        <section>
-            <div class="section-header">
-                <h2>Tin Mới Nhất</h2>
-                <a href="#" class="see-all">Xem tất cả →</a>
-            </div>
-            <div class="latest-news-grid">
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop" class="news-card-image" alt="Học sinh">
-                    <div class="news-card-content">
-                        <div class="news-card-meta">
-                            <span>📚 THPT</span>
-                            <span>• 2 giờ trước</span>
-                        </div>
-                        <h3 class="news-card-title">Học sinh Việt Nam giành 4 huy chương vàng Olympic Toán học</h3>
-                        <p class="news-card-excerpt">Đoàn học sinh Việt Nam xuất sắc đạt thành tích cao tại kỳ thi Olympic Toán học quốc tế...</p>
+        <div class="editors-pick-grid">
+            <div class="editors-pick-small">
+                <img src="https://i.pinimg.com/736x/ee/88/07/ee88073124f095d62f02ee19ad8ad6e2.jpg" alt="Sách sinh viên DAU">
+                <div class="editors-pick-small-content">
+                    <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                        <span>📖 ĐỌC SÁCH</span>
                     </div>
-                </div>
-
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop" class="news-card-image" alt="Sinh viên">
-                    <div class="news-card-content">
-                        <div class="news-card-meta">
-                            <span>⚽ THỂ THAO</span>
-                            <span>• 3 giờ trước</span>
-                        </div>
-                        <h3 class="news-card-title">Đại học Quốc gia vô địch giải bóng đá sinh viên toàn quốc</h3>
-                        <p class="news-card-excerpt">Trận chung kết kịch tính với tỷ số 3-2 đã mang về chức vô địch cho đội tuyển...</p>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop" class="news-card-image" alt="Công nghệ">
-                    <div class="news-card-content">
-                        <div class="news-card-meta">
-                            <span>💻 CÔNG NGHỆ</span>
-                            <span>• 4 giờ trước</span>
-                        </div>
-                        <h3 class="news-card-title">Sinh viên IT phát triển ứng dụng học AI miễn phí</h3>
-                        <p class="news-card-excerpt">Ứng dụng giúp người học tiếp cận AI và lập trình một cách dễ dàng và hiệu quả...</p>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&h=250&fit=crop" class="news-card-image" alt="Tốt nghiệp">
-                    <div class="news-card-content">
-                        <div class="news-card-meta">
-                            <span>🎓 TỐT NGHIỆP</span>
-                            <span>• 5 giờ trước</span>
-                        </div>
-                        <h3 class="news-card-title">95% sinh viên ngành CNTT có việc làm ngay sau tốt nghiệp</h3>
-                        <p class="news-card-excerpt">Con số ấn tượng cho thấy nhu cầu nhân lực công nghệ đang rất cao trên thị trường...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bulletin Story -->
-        <section class="bulletin-story">
-            <div class="section-header">
-                <h2>Chuyên Gia & Giảng Viên</h2>
-                <a href="#" class="see-all">Xem tất cả →</a>
-            </div>
-            <div class="bulletin-grid">
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=12" class="bulletin-avatar" alt="GS. Nguyễn Văn A">
-                    <div class="bulletin-name">GS. Nguyễn Văn A</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=20" class="bulletin-avatar" alt="PGS. Trần Thị B">
-                    <div class="bulletin-name">PGS. Trần Thị B</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=33" class="bulletin-avatar" alt="TS. Lê Văn C">
-                    <div class="bulletin-name">TS. Lê Văn C</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=47" class="bulletin-avatar" alt="ThS. Phạm Thị D">
-                    <div class="bulletin-name">ThS. Phạm Thị D</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=52" class="bulletin-avatar" alt="GV. Hoàng Văn E">
-                    <div class="bulletin-name">GV. Hoàng Văn E</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=65" class="bulletin-avatar" alt="TS. Vũ Thị F">
-                    <div class="bulletin-name">TS. Vũ Thị F</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=68" class="bulletin-avatar" alt="PGS. Đỗ Văn G">
-                    <div class="bulletin-name">PGS. Đỗ Văn G</div>
-                </div>
-                <div class="bulletin-item">
-                    <img src="https://i.pravatar.cc/150?img=27" class="bulletin-avatar" alt="GS. Bùi Thị H">
-                    <div class="bulletin-name">GS. Bùi Thị H</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Must Read -->
-        <section>
-            <div class="section-header">
-                <h2>Đọc Nhiều Nhất</h2>
-                <a href="#" class="see-all">Xem tất cả →</a>
-            </div>
-            <div class="must-read-grid">
-                <div class="must-read-large">
-                    <div class="must-read-card">
-                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=600&fit=crop" alt="Lập trình">
-                        <div class="must-read-overlay">
-                            <div class="must-read-category">💻 CÔNG NGHỆ • 10 PHÚT ĐỌC</div>
-                            <h3 class="must-read-title">Hành trình trở thành lập trình viên từ con số 0</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="must-read-large featured">
-                    <div class="must-read-card featured">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" alt="Học nhóm">
-                        <div class="must-read-overlay">
-                            <div class="must-read-category">📚 KỸ NĂNG • 8 PHÚT ĐỌC</div>
-                            <h3 class="must-read-title">Phương pháp học nhóm hiệu quả cho sinh viên đại học</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="must-read-large">
-                    <div class="must-read-card">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=600&fit=crop" alt="Học bài">
-                        <div class="must-read-overlay">
-                            <div class="must-read-category">✏️ THPT • 6 PHÚT ĐỌC</div>
-                            <h3 class="must-read-title">Bí quyết ôn thi THPT Quốc gia đạt điểm cao</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="must-read-large">
-                    <div class="must-read-card">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" alt="Du học">
-                        <div class="must-read-overlay">
-                            <div class="must-read-category">✈️ DU HỌC • 12 PHÚT ĐỌC</div>
-                            <h3 class="must-read-title">10 quốc gia có chi phí du học thấp nhất</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="must-read-large">
-                    <div class="must-read-card">
-                        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=400&h=300&fit=crop" alt="Học bổng">
-                        <div class="must-read-overlay">
-                            <div class="must-read-category">💰 HỌC BỔNG • 7 PHÚT ĐỌC</div>
-                            <h3 class="must-read-title">Danh sách học bổng toàn phần 2024-2025</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Editor's Pick -->
-        <section class="editors-pick">
-            <div class="section-header">
-                <h2>Lựa Chọn Của Biên Tập Viên</h2>
-                <a href="#" class="see-all">Xem tất cả →</a>
-            </div>
-            
-            <div class="editors-pick-featured">
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=500&fit=crop" alt="Công nghệ giáo dục">
-                <div class="editors-pick-content">
-                    <span class="hero-category">🚀 CÔNG NGHỆ GIÁO DỤC</span>
-                    <h2 class="editors-pick-title">AI trong giáo dục: Tương lai của việc học đã đến</h2>
-                    <p class="editors-pick-excerpt">Trí tuệ nhân tạo đang thay đổi cách chúng ta học tập và giảng dạy. Khám phá những ứng dụng AI mới nhất giúp cá nhân hóa trải nghiệm học tập cho từng học sinh...</p>
+                    <h3 class="editors-pick-small-title">Top 20 cuốn sách mọi sinh viên DAU nên đọc</h3>
                 </div>
             </div>
 
-            <div class="editors-pick-grid">
-                <div class="editors-pick-small">
-                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop" alt="Sách">
-                    <div class="editors-pick-small-content">
-                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
-                            <span>📖 ĐỌC SÁCH</span>
-                        </div>
-                        <h3 class="editors-pick-small-title">Top 20 cuốn sách mọi sinh viên nên đọc</h3>
+            <div class="editors-pick-small">
+                <img src="https://i.pinimg.com/1200x/0b/9f/b0/0b9fb0f96a5a96f8cda20683aca0019c.jpg" alt="Học online DAU">
+                <div class="editors-pick-small-content">
+                    <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                        <span>💻 E-LEARNING</span>
                     </div>
-                </div>
-
-                <div class="editors-pick-small">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Học online">
-                    <div class="editors-pick-small-content">
-                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
-                            <span>💻 E-LEARNING</span>
-                        </div>
-                        <h3 class="editors-pick-small-title">Nền tảng học trực tuyến miễn phí tốt nhất</h3>
-                    </div>
-                </div>
-
-                <div class="editors-pick-small">
-                    <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&h=250&fit=crop" alt="Viết bài">
-                    <div class="editors-pick-small-content">
-                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
-                            <span>✍️ KỸ NĂNG</span>
-                        </div>
-                        <h3 class="editors-pick-small-title">Cách viết luận văn đạt điểm cao</h3>
-                    </div>
-                </div>
-
-                <div class="editors-pick-small">
-                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&h=250&fit=crop" alt="Laptop">
-                    <div class="editors-pick-small-content">
-                        <div class="news-card-meta" style="margin-bottom: 0.5rem;">
-                            <span>💼 NGHỀ NGHIỆP</span>
-                        </div>
-                        <h3 class="editors-pick-small-title">15 ngành nghề hot nhất năm 2024</h3>
-                    </div>
+                    <h3 class="editors-pick-small-title">Nền tảng học trực tuyến tại DAU – Miễn phí cho sinh viên</h3>
                 </div>
             </div>
-        </section>
-    </div>
+
+            <div class="editors-pick-small">
+                <img src="https://i.pinimg.com/1200x/5e/76/ab/5e76abc482120d6abd7d4298f2e44ddf.jpg" alt="Viết luận văn DAU">
+                <div class="editors-pick-small-content">
+                    <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                        <span>✍️ KỸ NĂNG</span>
+                    </div>
+                    <h3 class="editors-pick-small-title">Cách viết luận văn đạt điểm cao – Gợi ý từ DAU</h3>
+                </div>
+            </div>
+
+            <div class="editors-pick-small">
+                <img src="https://i.pinimg.com/736x/0f/d9/b5/0fd9b520e6b149973fbcbe7c9e36a947.jpg" alt="Ngành nghề hot DAU">
+                <div class="editors-pick-small-content">
+                    <div class="news-card-meta" style="margin-bottom: 0.5rem;">
+                        <span>💼 NGHỀ NGHIỆP</span>
+                    </div>
+                    <h3 class="editors-pick-small-title">15 ngành nghề “hot” nhất năm 2025 – Gắn kết DAU & thị trường</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 
 
 
@@ -1065,6 +1119,10 @@
             </div>
         </div>
     </footer>
+    
+  <div id="scrollNavBtn" class="scroll-nav-btn-glass">
+  <i class="fa-solid fa-angles-up"></i>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -1084,5 +1142,23 @@
             });
         }
     </script>
+     <script>
+  const scrollBtn = document.getElementById("scrollNavBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollBtn.classList.add("show");
+    } else {
+      scrollBtn.classList.remove("show");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
 </body>
 </html>

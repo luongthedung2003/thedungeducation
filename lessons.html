@@ -315,6 +315,55 @@
 }
 
    </style>
+    <style>
+    .scroll-nav-btn-glass {
+  position: fixed;
+  bottom: 26px;
+  right: 22px;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  
+  /* Glassmorphism */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999999;
+}
+
+/* Hiện khi cuộn xuống */
+.scroll-nav-btn-glass.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Icon hover đẹp */
+.scroll-nav-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.32);
+  transform: scale(1.09);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+}
+
+/* Icon màu neon nhẹ */
+.scroll-nav-btn-glass i {
+  color: #6ee7ff;
+  text-shadow: 0 0 12px rgba(110, 231, 255, 0.7);
+}
+
+   </style>
 </head>
 <body>
     <!-- Desktop Navigation -->
@@ -627,6 +676,9 @@
         </div>
     </footer>
 
+  <div id="scrollNavBtn" class="scroll-nav-btn-glass">
+  <i class="fa-solid fa-angles-up"></i>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
 const subject = new URLSearchParams(window.location.search).get("subject");
@@ -673,8 +725,29 @@ const subjects = {
 // CHECK SUBJECT
 if (!subjects[subject]) {
   document.getElementById("subjectTitle").innerText = "Không có phần thi trắc nghiệm";
-  document.getElementById("lessonList").innerHTML =
-    `<p class="fw-bold text-danger text-center mt-4">Vui lòng chờ Admin cập nhật sau!</p>`;
+
+  // document.getElementById("lessonList").innerHTML = `
+  //   <div style="text-align:center; margin-top:0px;">
+  //       <img src="image/empty1.png" 
+  //            alt="Không có dữ liệu" 
+  //            style="max-width:150px; width:100%; opacity:0.9;">
+  //       <p class="fw-bold text-danger text-center mt-3" style="font-size:1.1rem;">
+  //           Vui lòng chờ Admin cập nhật sau!
+  //       </p>
+  //   </div>
+  // `;
+  document.getElementById("lessonList").innerHTML = `
+    <div style="text-align:center; margin-top:0px;">
+        <img src="https://i.pinimg.com/originals/00/f0/80/00f080497faeb0674f8f66eaf62312ad.gif"
+             alt="Đang cập nhật"
+             style="max-width:440px; width:100%; border-radius:12px;">
+        
+        <p class="fw-bold text-danger text-center mt-3" style="font-size:1.1rem;">
+            Vui lòng chờ Admin cập nhật sau!
+        </p>
+    </div>
+`;
+
 } 
 else {
   document.getElementById("subjectTitle").innerText = subjects[subject].title;
@@ -811,5 +884,23 @@ loadDocuments();
             });
         }
     </script>
+     <script>
+  const scrollBtn = document.getElementById("scrollNavBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollBtn.classList.add("show");
+    } else {
+      scrollBtn.classList.remove("show");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
 </body>
 </html>
